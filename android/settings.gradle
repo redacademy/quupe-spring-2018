@@ -1,0 +1,3 @@
+rootProject.name = 'quupe'
+
+include ':app'
