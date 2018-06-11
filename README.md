@@ -2,6 +2,8 @@
 
 ### ✨ Welcome to your Community Project! ✨
 
+## Authors
+
 ## Project Features
 
 ## Technologies Used
