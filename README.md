@@ -2,8 +2,13 @@
 
 ### ✨ Welcome to your Community Project! ✨
 
-QUUPE
-
 ## Authors
 
+## Project Features
+
+## Technologies Used
+
+### ✨ Sharing is Caring ✨
+
 ### ✨ Borrow not Buy ✨
+
