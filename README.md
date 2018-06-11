@@ -2,6 +2,8 @@
 
 ### ✨ Welcome to your Community Project! ✨
 
-### ✨ Sharing is Caring ✨
+QUUPE
+
+## Authors
 
 ### ✨ Borrow not Buy ✨
