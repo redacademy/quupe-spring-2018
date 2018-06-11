@@ -5,3 +5,8 @@
 ## Project Features
 
 ## Technologies Used
+
+### ✨ Sharing is Caring ✨
+
+### ✨ Borrow not Buy ✨
+
