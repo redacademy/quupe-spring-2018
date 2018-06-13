@@ -1,29 +1,13 @@
 {
-    "name": "quupe-server",
-    "version": "1.0.0",
-    "description": "",
-    "main": "index.js",
-    "scripts": {
-        "start": "nodemon ./src/index.js --exec babel-node"
-    },
-    "author": "",
-    "license": "ISC",
-    "dependencies": {
-        "apollo-server-express": "^2.0.0-beta.5",
-        "body-parser": "^1.18.3",
-        "cors": "^2.8.4",
-        "express": "^4.16.3",
-        "graph-tools": "^0.1.2",
-        "graphql": "^0.13.2",
-        "graphql-tag": "^2.9.2",
-        "graphql-tools": "^3.0.2",
-        "mongoose": "^5.1.5",
-        "morgan": "^1.9.0"
-    },
-    "devDependencies": {
-        "babel-cli": "^6.26.0",
-        "babel-preset-latest": "^6.24.1",
-        "babel-preset-stage-2": "^6.24.1",
-        "nodemon": "^1.17.5"
-    }
+  "name": "quupe-server",
+  "version": "1.0.0",
+  "description": "My Graphcool Service",
+  "dependencies": {
+    "@types/bcryptjs": "^2.4.1",
+    "@types/validator": "^6.3.0",
+    "bcryptjs": "^2.4.3",
+    "graphcool-lib": "^0.1.0",
+    "graphql-request": "^1.4.0",
+    "validator": "^9.0.0"
+  }
 }
