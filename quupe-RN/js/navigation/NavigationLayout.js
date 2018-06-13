@@ -1,5 +1,5 @@
 import React from 'react';
-import styles, { assetColors } from '../assets/styles';
+import { assetColors } from '../assets/styles';
 import {
   createStackNavigator,
   createBottomTabNavigator
@@ -16,7 +16,6 @@ const borrowStack = createStackNavigator(
   },
   {
     navigationOptions: ({ navigation }) => ({
-      ...sharedNavigationOptions(navigation),
       title: 'Borrow',
       headerTitleStyle: { color: assetColors.white }
     })
@@ -28,7 +27,6 @@ const lendStack = createStackNavigator(
     Lend: LendContainer
   },
   {
-    ...sharedNavigationOptions(navigation),
     title: 'Lend',
     headerTitleStyle: { color: assetColors.white }
   }
