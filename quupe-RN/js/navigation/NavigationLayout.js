@@ -7,8 +7,22 @@ import {
 
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
+import HomeContainer from '../screens/Home';
 import BorrowContainer from '../screens/Borrow';
 import LendContainer from '../screens/Lend';
+
+const homeStack = createStackNavigator(
+  {
+    Home: HomeContainer
+  },
+  {
+    navigationOptions: ({ navigation }) => ({
+      ...sharedNavigationOptions(navigation),
+      title: 'Home',
+      headerTitleStyle: { color: assetColors.white }
+    })
+  }
+);
 
 const borrowStack = createStackNavigator(
   {
@@ -36,6 +50,7 @@ const lendStack = createStackNavigator(
 
 export default createBottomTabNavigator(
   {
+    Home: homeStack,
     Lend: lendStack,
     Borrow: borrowStack
   },
@@ -48,6 +63,8 @@ export default createBottomTabNavigator(
           iconName = `ios-search${focused ? '' : '-outline'}`;
         } else if (routeName === 'Lend') {
           iconName = `ios-add${focused ? '' : '-outline'}`;
+        } else if (routeName === 'Home') {
+          iconName = `ios-home${focused ? '' : '-outline'}`;
         }
         return <Ionicons name={iconName} size={25} color={tintColor} />;
       }

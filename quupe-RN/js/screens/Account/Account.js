@@ -3,7 +3,7 @@ import { Text, View } from 'react-native';
 
 import styles from './styles';
 
-const Home = () => {
+const Account = () => {
   return (
     <View>
       <Text>Text Insert</Text>
@@ -11,4 +11,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default Account;

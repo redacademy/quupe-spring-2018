@@ -1,18 +1,18 @@
 import React, { Component } from 'react';
 import { Text, View } from 'react-native';
 
-import Home from './Home';
+import Account from './Account';
 import styles from './styles';
 
-class HomeContainer extends Component {
+class AccountContainer extends Component {
   render() {
     return (
       <View>
-        <Home />
-        <Text>Home Container</Text>
+        <Account />
+        <Text>Account Container</Text>
       </View>
     );
   }
 }
 
-export default HomeContainer;
+export default AccountContainer;
