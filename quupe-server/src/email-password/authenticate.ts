@@ -15,6 +15,7 @@ interface EventData {
 const SALT_ROUNDS = 10
 
 export default async (event: FunctionEvent<EventData>) => {
+  console.log(event)
 
   try {
     const graphcool = fromEvent(event)

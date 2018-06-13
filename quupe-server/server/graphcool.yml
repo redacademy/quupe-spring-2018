@@ -1,6 +1,4 @@
-
 types: ./types.graphql
-
 
 functions:
   signup:
