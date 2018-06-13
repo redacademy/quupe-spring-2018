@@ -4,7 +4,7 @@
     "description": "",
     "main": "index.js",
     "scripts": {
-        "start": "nodemon ./src/index.js --exec babel-node"
+        "start": "PORT=4000 nodemon ./src/index.js --exec babel-node"
     },
     "author": "",
     "license": "ISC",
@@ -23,7 +23,6 @@
     "devDependencies": {
         "babel-cli": "^6.26.0",
         "babel-preset-latest": "^6.24.1",
-        "babel-preset-stage-2": "^6.24.1",
         "nodemon": "^1.17.5"
     }
 }

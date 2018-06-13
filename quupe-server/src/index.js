@@ -9,7 +9,7 @@ import mongoose from 'mongoose';
 import { makeExecutableSchema } from 'graphql-tools';
 
 const app = express();
-const PORT = process.env.MDBPORT || 3333;
+const PORT = process.env.PORT || 3333;
 app.use('*', cors());
 
 const schema = makeExecutableSchema({
@@ -21,7 +21,7 @@ mongoose.connect('mongodb://localhost/test');
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function() {
-    console.log('were connection');
+    console.log('were connected');
 });
 
 const Item = mongoose.model('Item', { title: String });
