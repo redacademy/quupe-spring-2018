@@ -2,8 +2,8 @@ export default {
     Query: {
         allItems: async (parent, args, { Item }) => {
             const items = await Item.find();
-            return items.map(x => {
-                x._id = x._id.toString();
+            return items.map(item => {
+                item._id = item._id.toString();
                 return x;
             });
         }
