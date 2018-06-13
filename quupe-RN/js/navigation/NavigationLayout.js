@@ -7,8 +7,6 @@ import {
 
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
-import { sharedNavigationOptions } from './config';
-
 import BorrowContainer from '../screens/Borrow';
 import LendContainer from '../screens/Lend';
 
@@ -18,7 +16,6 @@ const borrowStack = createStackNavigator(
   },
   {
     navigationOptions: ({ navigation }) => ({
-      // ...sharedNavigationOptions(navigation),
       title: 'Borrow',
       headerTitleStyle: { color: assetColors.white }
     })
@@ -30,7 +27,6 @@ const lendStack = createStackNavigator(
     Lend: LendContainer
   },
   {
-    // ...sharedNavigationOptions(navigation),
     title: 'Lend',
     headerTitleStyle: { color: assetColors.white }
   }
