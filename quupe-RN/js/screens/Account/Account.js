@@ -1,12 +1,12 @@
 import React from 'react';
 import { View, Text } from 'react-native';
 
-const Home = () => {
+const Account = () => {
   return (
     <View>
-      <Text>Home Stateless</Text>
+      <Text>Account Stateless</Text>
     </View>
   );
 };
 
-export default Home;
+export default Account;
