@@ -18,3 +18,9 @@ functions:
     schema: src/loggedInUser.graphql
     handler:
       code: src/loggedInUser.ts
+
+permissions:
+  - operation: User.read
+  - operation: User.create
+  - operation: Item.read
+  - operation: Item.create

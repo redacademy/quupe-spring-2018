@@ -72,10 +72,11 @@ async function createGraphcoolUser(
     password: string
 ): Promise<string> {
     const mutation = `
-    mutation createGraphcoolUser($email: String!, $password: String!) {
+    mutation createGraphcoolUser($email: String!, $password: String!, $fullname: String!) {
       createUser(
         email: $email,
         password: $password
+        fullname: $fullname
       ) {
         id
       }

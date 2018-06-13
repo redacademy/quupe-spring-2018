@@ -4,7 +4,7 @@ type User @model {
   updatedAt: DateTime!
   email: String! @isUnique
   password: String!
-
+  fullname: String! @migrationValue(value: "No name yet")
   profileimage: String
   bio: String
 }
