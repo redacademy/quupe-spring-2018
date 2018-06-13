@@ -48,8 +48,10 @@ apollo-utilities@^0.2.0-beta.0:
   resolved "https://registry.yarnpkg.com/apollo-utilities/-/apollo-utilities-0.2.0-rc.3.tgz#7bd93be0f587f20c5b46e21880272e305759fdc2"
 
 apollo-utilities@^1.0.0, apollo-utilities@^1.0.1:
-  version "1.0.13"
-  resolved "https://registry.yarnpkg.com/apollo-utilities/-/apollo-utilities-1.0.13.tgz#793c858bb42243f7254d3c2961c64a7158e51022"
+  version "1.0.14"
+  resolved "https://registry.yarnpkg.com/apollo-utilities/-/apollo-utilities-1.0.14.tgz#39dc94b6fe827ab2857167545c7dafc11c2b6174"
+  dependencies:
+    fast-json-stable-stringify "^2.0.0"
 
 bcryptjs@^2.4.3:
   version "2.4.3"
@@ -72,7 +74,11 @@ encoding@^0.1.11:
   dependencies:
     iconv-lite "~0.4.13"
 
-graphcool-lib@^0.1.4:
+fast-json-stable-stringify@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/fast-json-stable-stringify/-/fast-json-stable-stringify-2.0.0.tgz#d5142c0caee6b1189f87d3a76111064f86c8bbf2"
+
+graphcool-lib@^0.1.0:
   version "0.1.4"
   resolved "https://registry.yarnpkg.com/graphcool-lib/-/graphcool-lib-0.1.4.tgz#0028b6d9b10dbf4d4f50c0d3ce4ccfcac18acaff"
   dependencies:
