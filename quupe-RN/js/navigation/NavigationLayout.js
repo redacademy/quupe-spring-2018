@@ -7,8 +7,22 @@ import {
 
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
+import HomeContainer from '../screens/Home';
 import BorrowContainer from '../screens/Borrow';
 import LendContainer from '../screens/Lend';
+import AccountContainer from '../screens/Account';
+
+const homeStack = createStackNavigator(
+  {
+    Home: HomeContainer
+  },
+  {
+    navigationOptions: ({ navigation }) => ({
+      title: 'Home',
+      headerTitleStyle: { color: assetColors.white }
+    })
+  }
+);
 
 const borrowStack = createStackNavigator(
   {
@@ -27,25 +41,45 @@ const lendStack = createStackNavigator(
     Lend: LendContainer
   },
   {
-    title: 'Lend',
-    headerTitleStyle: { color: assetColors.white }
+    navigationOptions: ({ navigation }) => ({
+      title: 'Lend',
+      headerTitleStyle: { color: assetColors.white }
+    })
+  }
+);
+
+const accountStack = createStackNavigator(
+  {
+    Account: AccountContainer
+  },
+  {
+    navigationOptions: ({ navigation }) => ({
+      title: 'Account',
+      headerTitleStyle: { color: assetColors.white }
+    })
   }
 );
 
 export default createBottomTabNavigator(
   {
+    Home: homeStack,
+    Borrow: borrowStack,
     Lend: lendStack,
-    Borrow: borrowStack
+    Account: accountStack
   },
   {
     navigationOptions: ({ navigation }) => ({
       tabBarIcon: ({ focused, tintColor }) => {
         const { routeName } = navigation.state;
         let iconName;
-        if (routeName === 'Borrow') {
+        if (routeName === 'Home') {
+          iconName = `ios-home${focused ? '' : '-outline'}`;
+        } else if (routeName === 'Borrow') {
           iconName = `ios-search${focused ? '' : '-outline'}`;
         } else if (routeName === 'Lend') {
           iconName = `ios-add${focused ? '' : '-outline'}`;
+        } else if (routeName === 'Account') {
+          iconName = `ios-contact${focused ? '' : '-outline'}`;
         }
         return <Ionicons name={iconName} size={25} color={tintColor} />;
       }
