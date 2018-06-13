@@ -9,7 +9,16 @@ const FaveSchema = {
   }
 };
 
-const realm = new Realm({ schema: [FaveSchema] });
+const tokenSchema = {
+  name: "Token",
+  primaryKey: "token",
+  properties: {
+    id: 'string',
+    token: "string"
+  }
+}
+
+const realm = new Realm({ schema: [FaveSchema, tokenSchema] });
 
 export const createFave = id => {
   realm.write(() => {
@@ -25,5 +34,13 @@ export const deleteFave = id => {
     realm.delete(faveToDelete);
   });
 };
+
+export const createToken = (token, id) => {
+  realm.write(() => {
+    realm.create("Token", { token: `${token}`, id: `${id}` });
+  });
+};
+
+export const queryToken = () => realm.objects("Token");
 
 export default realm;
