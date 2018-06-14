@@ -6,20 +6,20 @@ const SignUp = (props) => (
   <View style={styles.login}>
     <TextInput
       style={styles.input}
-      onChangeText={(fullname) => props.handleFullName(fullname)}
-      value={props.name}
+      onChangeText={}
+      value={}
       placeholder="Full Name"
     />
     <TextInput
       style={styles.input}
-      onChangeText={(email) => props.handleEmail(email)}
-      value={props.email}
+      onChangeText={}
+      value={}
       placeholder="Email"
     />
     <TextInput
       style={styles.input}
-      onChangeText={(password) => props.handlePassword(password)}
-      value={props.password}
+      onChangeText={}
+      value={}
       placeholder="Password"
     />
 
