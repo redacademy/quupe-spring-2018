@@ -10,3 +10,12 @@ export const assetColors = {
   lightGrey: '#DFDFDF',
   black: '#999999'
 };
+
+export const assetTypography = {
+  title: 'Roboto-Medium',
+  mainHeader: 'Roboto-Bold',
+  subHeader: 'Roboto-Regular',
+  popUp: 'Roboto-Light',
+  body: 'Roboto-Light',
+  description: 'Roboto-Light'
+};

@@ -1,10 +1,15 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { View } from 'react-native';
 
-const Borrow = () => {
+import Filter from '../../components/Filter';
+import Map from '../../components/Map';
+import styles from './styles';
+
+const Borrow = ({ location }) => {
   return (
-    <View>
-      <Text>Borrow Stateless</Text>
+    <View style={styles.page}>
+      <Filter />
+      <Map location={location} />
     </View>
   );
 };
