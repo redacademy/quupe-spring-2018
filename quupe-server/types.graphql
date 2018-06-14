@@ -1,20 +1,20 @@
+type Item @model {
+  id: ID! @isUnique
+  title: String!
+  image: String!
+  condition: String!
+  year: String!
+  category: String!
+  price: String!
+}
+
 type User @model {
-  id: ID! @isUnique 
-  createdAt: DateTime! 
+  id: ID! @isUnique
+  createdAt: DateTime!
   updatedAt: DateTime!
   email: String! @isUnique
   password: String!
-  fullname: String! @migrationValue(value: "No name yet")
+  fullname: String
   profileimage: String
   bio: String
-}
-
-type Item @model{
-     id: ID! @isUnique
-     title: String!
-     image: String! @migrationValue(value: "No name yet")
-     condition: String! @migrationValue(value: "No name yet")
-     year: String! @migrationValue(value: "No name yet")
-     category: String! @migrationValue(value: "No name yet")
-     price: String! @migrationValue(value: "No name yet")
 }

@@ -24,12 +24,13 @@ export default async (event: FunctionEvent<EventData>) => {
         const user: User = await getUserByEmail(api, email).then(r => r.User);
 
         if (!user) {
-            return { error: 'Invalid credentials!' };
+            return { error: 'Invalid credentials  ss!' };
         }
 
         const passwordIsCorrect = await bcrypt.compare(password, user.password);
+        console.log('is password true', passwordIsCorrect);
         if (!passwordIsCorrect) {
-            return { error: 'Invalid credentials!' };
+            return { error: 'Invalid credentials  dd!' };
         }
 
         const token = await graphcool.generateNodeToken(user.id, 'User');
