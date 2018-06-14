@@ -1,13 +1,19 @@
 {
-  "name": "quupe-server",
-  "version": "1.0.0",
-  "description": "My Graphcool Service",
-  "dependencies": {
-    "@types/bcryptjs": "^2.4.1",
-    "@types/validator": "^6.3.0",
-    "bcryptjs": "^2.4.3",
-    "graphcool-lib": "^0.1.4",
-    "graphql-request": "^1.4.0",
-    "validator": "^9.0.0"
-  }
+    "name": "quupe-server",
+    "version": "1.0.0",
+    "description": "My Graphcool Service",
+    "scripts": {
+        "start": "graphcool deploy"
+    },
+    "dependencies": {
+        "@types/bcryptjs": "^2.4.1",
+        "@types/validator": "^6.3.0",
+        "bcryptjs": "^2.4.3",
+        "eslint": "^4.19.1",
+        "eslint-plugin-graphql": "^2.1.1",
+        "eslint-plugin-node": "^6.0.1",
+        "graphcool-lib": "^0.1.4",
+        "graphql-request": "^1.4.0",
+        "validator": "^9.0.0"
+    }
 }
