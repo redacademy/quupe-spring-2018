@@ -16,8 +16,8 @@ const Map = ({ location }) => {
             region={{
               latitude: location.latitude,
               longitude: location.longitude,
-              latitudeDelta: 1,
-              longitudeDelta: 1
+              latitudeDelta: .3,
+              longitudeDelta: .3
             }}
           >
             <MapView.Marker
