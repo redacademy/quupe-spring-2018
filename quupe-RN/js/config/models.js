@@ -41,6 +41,13 @@ export const createToken = (token, id) => {
   });
 };
 
-export const queryToken = () => realm.objects("Token");
+export const queryToken = () => realm.objects('Token');
+
+export const deleteToken = (token) => {
+  realm.write(() => {
+    const tokenToDelete = realm.objects('Token').filtered('token == $0', token);
+    realm.delete(tokenToDelete);
+  })
+}
 
 export default realm;

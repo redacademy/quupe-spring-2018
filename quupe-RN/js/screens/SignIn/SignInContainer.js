@@ -25,22 +25,19 @@ const signInMutation = gql`
 `;
 
 class SignInContainer extends Component {
-  realmToken(token, id) {
+  saveAuthToken(token, id) {
+    // saving token to realm and redirecting user to home page
     this.props.dispatch(createUserToken(token, id));
     this.props.navigation.navigate('Home');
   }
 
   render() {
     return (
-      <Mutation mutation={signInMutation} onCompleted={(data) => this.realmToken(data.authenticateUser.token, data.authenticateUser.id)}>
+      <Mutation mutation={signInMutation} onCompleted={(data) => this.saveAuthToken(data.authenticateUser.token, data.authenticateUser.id)}>
         {(authenticateUser, { data, loading, error }) => (
           <View>
             <SignIn
               authenticateUser={authenticateUser}
-              handleSubmit={this.handleSubmit}
-              userRef={this.username}
-              passRef={this.password}
-              handleSubmit={this.handleSubmit}
               data={data}
               loading={loading}
               error={error}

@@ -81,7 +81,8 @@ export default createBottomTabNavigator(
     Home: homeStack,
     Borrow: borrowStack,
     Lend: lendStack,
-    Account: accountStack
+    Account: accountStack,
+    SignIn: signInStack
   },
   {
     navigationOptions: ({ navigation }) => ({
