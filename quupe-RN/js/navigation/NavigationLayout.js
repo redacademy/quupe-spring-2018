@@ -2,7 +2,8 @@ import React from 'react';
 import { assetColors } from '../assets/styles';
 import {
   createStackNavigator,
-  createBottomTabNavigator
+  createBottomTabNavigator,
+  createSwitchNavigator
 } from 'react-navigation';
 
 import Ionicons from 'react-native-vector-icons/Ionicons';
@@ -11,6 +12,7 @@ import HomeContainer from '../screens/Home';
 import BorrowContainer from '../screens/Borrow';
 import LendContainer from '../screens/Lend';
 import AccountContainer from '../screens/Account';
+import SignInContainer from '../screens/SignIn';
 
 const homeStack = createStackNavigator(
   {
@@ -59,6 +61,20 @@ const accountStack = createStackNavigator(
     })
   }
 );
+
+const signInStack = createStackNavigator({
+  SignIn: SignInContainer
+})
+
+const authSwitch = createSwitchNavigator(
+  {
+    Home: homeStack,
+    Auth: signInStack
+  },
+  {
+    initialRouteName: 'Auth'
+  }
+)
 
 export default createBottomTabNavigator(
   {

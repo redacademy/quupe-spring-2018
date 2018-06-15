@@ -1,10 +1,48 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, TextInput, TouchableOpacity } from 'react-native';
+import { Form, Field } from 'react-final-form';
 
-const SignIn = () => (
-  <View>
-    <Text>LOGIN</Text>
-  </View>
+import styles from './styles';
+
+const SignIn = (props) => (
+  <Form
+    onSubmit={(values) => {
+      props.authenticateUser({
+        variables: { ...values }
+      }
+      );
+    }}
+    // validate={validate}
+    render={({ handleSubmit, pristine, invalid }) => (
+      <View style={styles.login}>
+        <Field
+          name='email'
+          render={({ input, meta }) => (
+            <TextInput
+              {...input}
+              style={styles.input}
+              placeholder='Email'
+            />
+          )}
+        />
+        <Field
+          name='password'
+          render={({ input, meta }) => (
+            <TextInput
+              {...input}
+              style={styles.input}
+              placeholder='Password'
+            />
+          )}
+        />
+        {props.loading && <Text>Loading</Text>}
+        {props.error && <Text>There was an error</Text>}
+        <TouchableOpacity disabled={pristine || invalid}>
+          <Text style={styles.signInButton} onPress={handleSubmit}>Sign In</Text>
+        </TouchableOpacity>
+      </View>
+    )}
+  />
 )
 
 export default SignIn;
