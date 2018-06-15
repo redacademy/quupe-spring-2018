@@ -23,7 +23,7 @@ target 'quupe' do
       'RCTWebSocket',
     ]
   
-    # React Native third party dependencies podspecs
+    # React Native 3rd party dependencies podspecs
     pod 'DoubleConversion', :podspec => "#{rn_path}/third-party-podspecs/DoubleConversion.podspec"
     pod 'glog', :podspec => "#{rn_path}/third-party-podspecs/glog.podspec"
     # If you are using React Native <0.54, you will get the following error:
@@ -37,6 +37,8 @@ target 'quupe' do
     pod 'react-native-google-maps', path: rn_maps_path  # Remove this line if you don't want to support GoogleMaps on iOS
     pod 'GoogleMaps'  # Remove this line if you don't want to support GoogleMaps on iOS
     pod 'Google-Maps-iOS-Utils' # Remove this line if you don't want to support GoogleMaps on iOS
+    pod 'RNVectorIcons', :path => '../node_modules/react-native-vector-icons'
+
   end
   
   post_install do |installer|

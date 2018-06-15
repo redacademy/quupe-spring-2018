@@ -1,20 +1,54 @@
+enum CategoryEnum{
+CAMERA
+CAMPING
+DRONE
+OUTDOOR
+ELECTRONICS
+GARDENING
+SPORTS
+}
+
 type Item @model {
   id: ID! @isUnique
   title: String!
   image: String!
   condition: String!
   year: String!
-  category: String!
+  description: String! @migrationValue(value: String)
+  category: String! @migrationValue(value: CategoryEnum)
+  originalPrice: String! @migrationValue(value: String)
   price: String!
+  priceOneWeek: String! @migrationValue(value: String)
+  priceOneMonth: String! @migrationValue(value: String)
+  latitude: Float! @migrationValue(value: "0")
+  longitude: Float! @migrationValue(value: "0")
+  borrow: User @relation(name: "UserOnItem")
+
 }
 
 type User @model {
-  id: ID! @isUnique
+  id: ID! @isUnique 
   createdAt: DateTime!
   updatedAt: DateTime!
   email: String! @isUnique
   password: String!
-  fullname: String
+  fullname: String 
   profileimage: String
   bio: String
+  borrow: [Item!]! @relation(name: "UserOnItem")
+  rooms: [Room!]! @relation(name: "UserOnRoom")
+  messages: [Messages!]! @relation(name: "MessagesOnUser")
+}
+
+type Room @model {
+  id: ID! @isUnique 
+  messages: [Messages!]! @relation(name: "MessagesOnRoom")
+  people: [User!]! @relation(name: "UserOnRoom")
+}
+
+type Messages @model {
+     id: ID! @isUnique
+     text: String!
+     roomid: Room! @relation(name: "MessagesOnRoom")
+     sentBy: [User!]! @relation(name: "MessagesOnUser")
 }
