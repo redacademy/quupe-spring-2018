@@ -14,6 +14,8 @@ import LendContainer from '../screens/Lend';
 import AccountContainer from '../screens/Account';
 import SignInContainer from '../screens/SignIn';
 
+import SignUpContainer from '../screens/SignUp';
+
 const homeStack = createStackNavigator(
   {
     Home: HomeContainer
@@ -62,6 +64,7 @@ const accountStack = createStackNavigator(
   }
 );
 
+<<<<<<< HEAD
 const signInStack = createStackNavigator({
   SignIn: SignInContainer
 })
@@ -75,13 +78,22 @@ const authSwitch = createSwitchNavigator(
     initialRouteName: 'Auth'
   }
 )
+=======
+const signUpStack = createStackNavigator(
+  {
+    SignUp: SignUpContainer
+  }
+)
+
+>>>>>>> Added signup to navigation stack for testing purposes
 
 export default createBottomTabNavigator(
   {
     Home: homeStack,
     Borrow: borrowStack,
     Lend: lendStack,
-    Account: accountStack
+    Account: accountStack,
+    SignUp: signUpStack
   },
   {
     navigationOptions: ({ navigation }) => ({
