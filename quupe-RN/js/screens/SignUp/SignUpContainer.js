@@ -7,15 +7,27 @@ const signUpMutation = gql`
   mutation signupUser(
     $email: String!
     $password: String!
-    $fullname: String!
   ) {
     signupUser(
       email: $email
       password: $password
-      fullname: $fullname
     ) {
       id
       token
+    }
+  }
+`;
+
+const updateUserMutation = gql`
+  mutation updateUser(
+    $id: ID!
+    $fullname: String!
+  ) {
+    updateUser(
+      id: $id
+      fullname: $fullname
+    ) {
+      id
     }
   }
 `;
@@ -27,12 +39,15 @@ class SignUpContainer extends Component {
       <Mutation
         mutation={signUpMutation}
       >
-        {(signupUser, { data }) => (
+        {(signupUser, { data, loading, error }) => (
           <SignUp
             signupUser={signupUser}
+            data={data}
+            loading={loading}
+            error={error}
           />
         )}
-      </Mutation>
+      </Mutation >
     )
   }
 }
