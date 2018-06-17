@@ -8,7 +8,7 @@ const SignUp = (props) => (
     onSubmit={(values) => {
       props.signupUser({
         variables: { ...values }
-      });
+      }).catch(error => console.log(error));
     }}
     render={({ handleSubmit, pristine, invalid }) => (
       <View style={styles.login}>

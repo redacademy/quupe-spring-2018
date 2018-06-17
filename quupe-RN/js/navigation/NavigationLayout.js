@@ -82,11 +82,11 @@ const signUpStack = createStackNavigator({ SignUp: SignUpContainer });
 
 export default createBottomTabNavigator(
   {
+    SignUp: signUpStack,
     Home: homeStack,
     Borrow: borrowStack,
     Lend: lendStack,
-    Account: accountStack,
-    SignUp: signUpStack
+    Account: accountStack
   },
   {
     navigationOptions: ({ navigation }) => ({
