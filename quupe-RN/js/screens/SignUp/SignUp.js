@@ -7,9 +7,8 @@ const SignUp = (props) => (
   <Form
     onSubmit={(values) => {
       props.signupUser({
-        variables: { email: values.email, password: values.password }
+        variables: { ...values }
       });
-      console.log(props.data);
     }}
     render={({ handleSubmit, pristine, invalid }) => (
       <View style={styles.login}>

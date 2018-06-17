@@ -7,27 +7,15 @@ const signUpMutation = gql`
   mutation signupUser(
     $email: String!
     $password: String!
+    $fullname: String!
   ) {
     signupUser(
       email: $email
       password: $password
-    ) {
-      id
-      token
-    }
-  }
-`;
-
-const updateUserMutation = gql`
-  mutation updateUser(
-    $id: ID!
-    $fullname: String!
-  ) {
-    updateUser(
-      id: $id
       fullname: $fullname
     ) {
       id
+      token
     }
   }
 `;
