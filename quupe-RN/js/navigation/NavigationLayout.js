@@ -64,7 +64,6 @@ const accountStack = createStackNavigator(
   }
 );
 
-<<<<<<< HEAD
 const signInStack = createStackNavigator({
   SignIn: SignInContainer
 })
@@ -78,14 +77,8 @@ const authSwitch = createSwitchNavigator(
     initialRouteName: 'Auth'
   }
 )
-=======
-const signUpStack = createStackNavigator(
-  {
-    SignUp: SignUpContainer
-  }
-)
 
->>>>>>> Added signup to navigation stack for testing purposes
+const signUpStack = createStackNavigator({ SignUp: SignUpContainer });
 
 export default createBottomTabNavigator(
   {
