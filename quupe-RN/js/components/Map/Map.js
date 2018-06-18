@@ -32,8 +32,7 @@ const Map = ({ location }) => (
 );
 
 Map.propTypes = {
-    location: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.object]))
-        .isRequired
+    location: PropTypes.object.isRequired
 };
 
 export default Map;
