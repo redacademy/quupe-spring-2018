@@ -14,6 +14,8 @@ import LendContainer from '../screens/Lend';
 import AccountContainer from '../screens/Account';
 import SignInContainer from '../screens/SignIn';
 
+import SignUpContainer from '../screens/SignUp';
+
 const homeStack = createStackNavigator(
   {
     Home: HomeContainer
@@ -62,14 +64,16 @@ const accountStack = createStackNavigator(
   }
 );
 
-const signInStack = createStackNavigator({
-  SignIn: SignInContainer
+const authStack = createStackNavigator({
+  SignIn: SignInContainer,
+  SignUp: SignUpContainer
+  // TODO: Add a home page to complete the authStack navigator
 })
 
 const authSwitch = createSwitchNavigator(
   {
     Home: homeStack,
-    Auth: signInStack
+    Auth: authStack
   },
   {
     initialRouteName: 'Auth'

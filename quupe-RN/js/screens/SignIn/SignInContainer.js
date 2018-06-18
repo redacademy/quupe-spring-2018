@@ -33,7 +33,10 @@ class SignInContainer extends Component {
 
   render() {
     return (
-      <Mutation mutation={signInMutation} onCompleted={(data) => this.saveAuthToken(data.authenticateUser.token, data.authenticateUser.id)}>
+      <Mutation
+        mutation={signInMutation}
+        onCompleted={(data) => this.saveAuthToken(data.authenticateUser.token, data.authenticateUser.id)}
+      >
         {(authenticateUser, { data, loading, error }) => (
           <View>
             <SignIn

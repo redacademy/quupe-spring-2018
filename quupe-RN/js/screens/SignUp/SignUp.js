@@ -1,20 +1,27 @@
 import React from 'react';
-import { View, Text, TextInput, TouchableOpacity } from 'react-native';
+import { Text, View, TextInput, TouchableOpacity } from 'react-native';
 import { Form, Field } from 'react-final-form';
-
 import styles from './styles';
 
-const SignIn = (props) => (
+const SignUp = (props) => (
   <Form
     onSubmit={(values) => {
-      props.authenticateUser({
+      props.signupUser({
         variables: { ...values }
-      }
-      );
+      }).catch(error => console.log(error));
     }}
-    // validate={validate}
     render={({ handleSubmit, pristine, invalid }) => (
       <View style={styles.login}>
+        <Field
+          name='fullname'
+          render={({ input, meta }) => (
+            <TextInput
+              {...input}
+              style={styles.input}
+              placeholder='Full Name'
+            />
+          )}
+        />
         <Field
           name='email'
           render={({ input, meta }) => (
@@ -37,12 +44,13 @@ const SignIn = (props) => (
         />
         {props.loading && <Text>Loading</Text>}
         {props.error && <Text>There was an error</Text>}
-        <TouchableOpacity disabled={pristine || invalid}>
-          <Text style={styles.signInButton} onPress={handleSubmit}>Sign In</Text>
+        <TouchableOpacity onPress={handleSubmit}>
+          <Text style={styles.signInButton}>Sign Up</Text>
         </TouchableOpacity>
+        <Text style={styles.seperator}>OR</Text>
       </View>
     )}
   />
-)
+);
 
-export default SignIn;
+export default SignUp;
