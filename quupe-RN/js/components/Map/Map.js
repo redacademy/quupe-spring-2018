@@ -2,11 +2,11 @@ import React from 'react';
 import { View } from 'react-native';
 import MapView from 'react-native-maps';
 
+import PropTypes from 'prop-types';
+
 import styles from './styles';
 
 const Map = ({ location }) => {
-  console.log(location.latitude);
-  console.log(location.longitude);
   return (
     <View style={styles.mapContainer}>
       {location.latitude &&
@@ -16,8 +16,8 @@ const Map = ({ location }) => {
             region={{
               latitude: location.latitude,
               longitude: location.longitude,
-              latitudeDelta: .3,
-              longitudeDelta: .3
+              latitudeDelta: 0.3,
+              longitudeDelta: 0.3
             }}
           >
             <MapView.Marker
@@ -31,6 +31,10 @@ const Map = ({ location }) => {
         )}
     </View>
   );
+};
+
+Map.propTypes = {
+  location: PropTypes.number
 };
 
 export default Map;
