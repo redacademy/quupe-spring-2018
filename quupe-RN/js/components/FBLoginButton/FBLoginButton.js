@@ -36,7 +36,8 @@ FBLoginButton.defaultProps = {
 FBLoginButton.propTypes = {
     saveAuthToken: PropTypes.func.isRequired,
     isCancelled: PropTypes.bool,
-    error: PropTypes.bool
+    error: PropTypes.bool,
+    dispatch: PropTypes.func.isRequired
 };
 
 export default connect(state => ({
