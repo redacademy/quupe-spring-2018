@@ -20,7 +20,9 @@ functions:
       code: src/loggedInUser.ts
 
 permissions:
+  - operation: "*"
   - operation: User.read
   - operation: User.create
+  - operation: User.update
   - operation: Item.read
   - operation: Item.create
