@@ -65,8 +65,8 @@ const accountStack = createStackNavigator(
 );
 
 const authStack = createStackNavigator({
-    SignIn: SignInContainer,
-    SignUp: SignUpContainer
+    SignUp: SignUpContainer,
+    SignIn: SignInContainer
     // TODO: Add a home page to complete the authStack navigator
 });
 
@@ -85,7 +85,8 @@ export default createBottomTabNavigator(
         Home: homeStack,
         Borrow: borrowStack,
         Lend: lendStack,
-        Account: accountStack
+        Account: accountStack,
+        SignIn: authStack
     },
     {
         navigationOptions: ({ navigation }) => ({

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { View, Text, TextInput, TouchableOpacity } from 'react-native';
 import { Form, Field } from 'react-final-form';
 
@@ -45,5 +46,15 @@ const SignIn = props => (
         )}
     />
 );
+
+SignIn.defaultProps = {
+    error: ''
+};
+
+SignIn.propTypes = {
+    authenticateUser: PropTypes.func.isRequired,
+    loading: PropTypes.bool.isRequired,
+    error: PropTypes.string
+};
 
 export default SignIn;
