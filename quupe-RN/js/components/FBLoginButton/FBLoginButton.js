@@ -1,47 +1,45 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { View, Text } from 'react-native';
 import PropTypes from 'prop-types';
 import { LoginButton, AccessToken } from 'react-native-fbsdk';
+import { connect } from 'react-redux';
 import styles from './styles';
+import { loginIsCancelled, loginHasErrored } from '../../redux/modules/Token';
 
-class FBLoginButton extends Component {
-    constructor() {
-        super();
-        this.state = {
-            isCancelled: false,
-            error: false
-        };
-    }
+const FBLoginButton = props => (
+    <View style={styles.loginButton}>
+        <LoginButton
+            readPermissions={['email']}
+            onLoginFinished={(error, result) => {
+                if (error) {
+                    props.dispatch(loginHasErrored());
+                } else if (result.isCancelled) {
+                    props.dispatch(loginIsCancelled());
+                } else {
+                    AccessToken.getCurrentAccessToken().then(data => {
+                        const { accessToken, userID } = data;
+                        props.saveAuthToken(accessToken, userID);
+                    });
+                }
+            }}
+        />
+        {props.isCancelled && <Text>Login was cancelled.</Text>}
+        {props.error && <Text>There was an error logging in.</Text>}
+    </View>
+);
 
-    render() {
-        return (
-            <View style={styles.loginButton}>
-                <LoginButton
-                    readPermissions={['email']}
-                    onLoginFinished={(error, result) => {
-                        if (error) {
-                            this.setState({ error: true });
-                        } else if (result.isCancelled) {
-                            this.setState({ isCancelled: true });
-                        } else {
-                            AccessToken.getCurrentAccessToken().then(data => {
-                                const { accessToken, userID } = data;
-                                this.props.saveAuthToken(accessToken, userID);
-                            });
-                        }
-                    }}
-                />
-                {this.state.isCancelled && <Text>Login was cancelled.</Text>}
-                {this.state.error && (
-                    <Text>There was an error logging in.</Text>
-                )}
-            </View>
-        );
-    }
-}
-
-FBLoginButton.propTypes = {
-    saveAuthToken: PropTypes.func.isRequired
+FBLoginButton.defaultProps = {
+    isCancelled: false,
+    error: false
 };
 
-export default FBLoginButton;
+FBLoginButton.propTypes = {
+    saveAuthToken: PropTypes.func.isRequired,
+    isCancelled: PropTypes.bool,
+    error: PropTypes.bool
+};
+
+export default connect(state => ({
+    isCancelled: state.Token.isCancelled,
+    isError: state.Token.isError
+}))(FBLoginButton);
