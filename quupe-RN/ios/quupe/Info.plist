@@ -63,6 +63,32 @@
 	<array>
 		<string>armv7</string>
 	</array>
+	<key>CFBundleSignature</key>
+	<string>????</string>
+	<key>CFBundleURLTypes</key>
+ <array>
+  <dict>
+   <key>CFBundleURLSchemes</key>
+   <array>
+    <string>fb1601272149999995</string>
+   </array>
+  </dict>
+ </array>
+ <key>FacebookAppID</key>
+ <string>1601272149999995</string>
+ <key>FacebookDisplayName</key>
+ <string>Quupe</string>
+ <key>LSApplicationQueriesSchemes</key>
+ <array>
+  <string>fbapi</string>
+  <string>fb-messenger-share-api</string>
+  <string>fbauth2</string>
+  <string>fbshareextension</string>
+ </array>
+	<key>LSRequiresIPhoneOS</key>
+	<true/>
+	<key>CFBundleDisplayName</key>
+	<string>quupe</string>
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
