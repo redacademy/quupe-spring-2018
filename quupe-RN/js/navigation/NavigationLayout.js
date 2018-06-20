@@ -13,7 +13,12 @@ import BorrowContainer from '../screens/Borrow';
 import LendContainer from '../screens/Lend';
 import AccountContainer from '../screens/Account';
 import SignInContainer from '../screens/SignIn';
-
+import MyItems from '../screens/MyItems';
+import Messages from '../screens/Messages';
+import TransactionHistory from '../screens/TransactionHistory';
+import Favorites from '../screens/Favorites';
+import BorrowedItems from '../screens/BorrowedItems';
+import LentItems from '../screens/LentItems';
 import SignUpContainer from '../screens/SignUp';
 
 const homeStack = createStackNavigator(
@@ -54,7 +59,13 @@ const lendStack = createStackNavigator(
 
 const accountStack = createStackNavigator(
     {
-        Account: AccountContainer
+        Account: AccountContainer,
+        Favorites,
+        MyItems,
+        BorrowedItems,
+        LentItems,
+        Messages,
+        TransactionHistory
     },
     {
         navigationOptions: ({ navigation }) => ({
@@ -86,7 +97,7 @@ export default createBottomTabNavigator(
         Borrow: borrowStack,
         Lend: lendStack,
         Account: accountStack,
-        SignIn: authStack
+        signin: authStack
     },
     {
         navigationOptions: ({ navigation }) => ({
