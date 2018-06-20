@@ -17,6 +17,7 @@ type Item @model {
   description: String! @migrationValue(value: String)
   category: String! @migrationValue(value: CategoryEnum)
   originalPrice: String! @migrationValue(value: String)
+  category: String! @migrationValue(value: CategoryEnum)
   price: String!
   priceOneWeek: String! @migrationValue(value: String)
   priceOneMonth: String! @migrationValue(value: String)
@@ -51,4 +52,14 @@ type Messages @model {
      text: String!
      roomid: Room! @relation(name: "MessagesOnRoom")
      sentBy: [User!]! @relation(name: "MessagesOnUser")
+}
+
+type File @model {
+  id: ID! @isUnique
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  contentType: String
+  name: String
+  secret: String @isUnique
+  url: String
 }

@@ -1,12 +1,11 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { ScrollView } from 'react-native';
+import LendForm from '../../components/LendForm';
 
-const Lend = () => {
-  return (
-    <View>
-      <Text>Lend Stateless</Text>
-    </View>
-  );
-};
+const Lend = () => (
+    <ScrollView>
+        <LendForm />
+    </ScrollView>
+);
 
 export default Lend;
