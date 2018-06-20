@@ -24,11 +24,13 @@ type Item @model {
   latitude: Float! @migrationValue(value: "0")
   longitude: Float! @migrationValue(value: "0")
   borrow: User @relation(name: "UserOnItem")
+  owner: User @relation(name: "ItemsOnUser")
 
 }
 
 type User @model {
   id: ID! @isUnique 
+  items: [Item!]! @relation(name: "ItemsOnUser")
   createdAt: DateTime!
   updatedAt: DateTime!
   email: String! @isUnique
@@ -55,11 +57,12 @@ type Messages @model {
 }
 
 type File @model {
-  id: ID! @isUnique
-  createdAt: DateTime!
-  updatedAt: DateTime!
-  contentType: String
-  name: String
-  secret: String @isUnique
-  url: String
+ id: ID! @isUnique
+ createdAt: DateTime!
+ updatedAt: DateTime!
+ contentType: String
+ name: String
+ secret: String @isUnique
+ size: Int
+ url: String
 }
