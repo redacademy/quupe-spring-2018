@@ -55,6 +55,7 @@
 		ADBDB9381DFEBF1600ED6528 /* libRCTBlob.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ADBDB9271DFEBF0700ED6528 /* libRCTBlob.a */; };
 		AE30F05A82F54CB7B511322A /* libRealmReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CC36FD7B32BC4624B249B795 /* libRealmReact.a */; };
 		CAAF471C264140C0B2F25DED /* Ionicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2AFB664622C64F9B935ADD06 /* Ionicons.ttf */; };
+		CE06D0F520D9A721009EACDB /* libRNImagePicker.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CE06D0F420D9A70D009EACDB /* libRNImagePicker.a */; };
 		D1BA00CB995C4AF6848F1E96 /* Foundation.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F8D2AEC0DBCA4BFB9BD6097F /* Foundation.ttf */; };
 		D736F55CACCC48179A759352 /* EvilIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FCEB23F2EFF1464AB2A13C72 /* EvilIcons.ttf */; };
 		EE57628BA8524D65A822E293 /* Octicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1BE69464400148F49AFC9398 /* Octicons.ttf */; };
@@ -349,6 +350,13 @@
 			remoteGlobalIDString = 358F4ED71D1E81A9004DF814;
 			remoteInfo = RCTBlob;
 		};
+		CE06D0F320D9A70D009EACDB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CE06D0EF20D9A70D009EACDB /* RNImagePicker.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 014A3B5C1C6CF33500B6D375;
+			remoteInfo = RNImagePicker;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
@@ -399,6 +407,7 @@
 		9DFCB568DE9C7E96DCAEBABD /* Pods-quupe.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-quupe.debug.xcconfig"; path = "Pods/Target Support Files/Pods-quupe/Pods-quupe.debug.xcconfig"; sourceTree = "<group>"; };
 		ADBDB91F1DFEBF0600ED6528 /* RCTBlob.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTBlob.xcodeproj; path = "../node_modules/react-native/Libraries/Blob/RCTBlob.xcodeproj"; sourceTree = "<group>"; };
 		CC36FD7B32BC4624B249B795 /* libRealmReact.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRealmReact.a; sourceTree = "<group>"; };
+		CE06D0EF20D9A70D009EACDB /* RNImagePicker.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RNImagePicker.xcodeproj; path = "../node_modules/react-native-image-picker/ios/RNImagePicker.xcodeproj"; sourceTree = "<group>"; };
 		D5B68616BDB8488791CE0666 /* MaterialIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/MaterialIcons.ttf"; sourceTree = "<group>"; };
 		F8D2AEC0DBCA4BFB9BD6097F /* Foundation.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Foundation.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Foundation.ttf"; sourceTree = "<group>"; };
 		FBF17971EF4347A512891629 /* libPods-quupe.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-quupe.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -423,6 +432,7 @@
 				29902E3E20D8C01B0024441E /* FBSDKShareKit.framework in Frameworks */,
 				29902E3C20D8C00F0024441E /* FBSDKLoginKit.framework in Frameworks */,
 				29902E3A20D8C0010024441E /* FBSDKCoreKit.framework in Frameworks */,
+				CE06D0F520D9A721009EACDB /* libRNImagePicker.a in Frameworks */,
 				ADBDB9381DFEBF1600ED6528 /* libRCTBlob.a in Frameworks */,
 				5E9157361DD0AC6A00FF2AA8 /* libRCTAnimation.a in Frameworks */,
 				146834051AC3E58100842450 /* libReact.a in Frameworks */,
@@ -678,6 +688,7 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
+				CE06D0EF20D9A70D009EACDB /* RNImagePicker.xcodeproj */,
 				13B07FAE1A68108700A75B9A /* quupe */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* quupeTests */,
@@ -708,6 +719,14 @@
 			children = (
 				ADBDB9271DFEBF0700ED6528 /* libRCTBlob.a */,
 				2D16E6721FA4F8DC00B85C8A /* libRCTBlob-tvOS.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		CE06D0F020D9A70D009EACDB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				CE06D0F420D9A70D009EACDB /* libRNImagePicker.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -914,6 +933,10 @@
 				{
 					ProductGroup = 29902B2020D85A720024441E /* Products */;
 					ProjectRef = 5959070ED5354CDD97AD67DD /* RealmReact.xcodeproj */;
+				},
+				{
+					ProductGroup = CE06D0F020D9A70D009EACDB /* Products */;
+					ProjectRef = CE06D0EF20D9A70D009EACDB /* RNImagePicker.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -1198,6 +1221,13 @@
 			fileType = archive.ar;
 			path = libRCTBlob.a;
 			remoteRef = ADBDB9261DFEBF0700ED6528 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		CE06D0F420D9A70D009EACDB /* libRNImagePicker.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libRNImagePicker.a;
+			remoteRef = CE06D0F320D9A70D009EACDB /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */

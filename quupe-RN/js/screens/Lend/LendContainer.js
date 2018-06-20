@@ -3,14 +3,9 @@ import { View, Text } from 'react-native';
 import Lend from './Lend';
 
 class LendContainer extends Component {
-  render() {
-    return (
-      <View>
-        <Lend />
-        <Text>LendContainer</Text>
-      </View>
-    );
-  }
+    render() {
+        return <Lend />;
+    }
 }
 
 export default LendContainer;

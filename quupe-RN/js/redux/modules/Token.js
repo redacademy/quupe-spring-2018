@@ -57,6 +57,7 @@ const initialState = {
     error: '',
     isError: false,
     isCancelled: false
+    error: ''
 };
 
 export default (state = initialState, action) => {
