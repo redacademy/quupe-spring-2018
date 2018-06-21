@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { View } from 'react-native';
 import { connect } from 'react-redux';
 
 import PropTypes from 'prop-types';
@@ -40,12 +39,10 @@ class BorrowContainer extends Component {
 
     render() {
         return (
-            <View>
-                <Borrow
-                    latitude={this.props.latitude}
-                    longitude={this.props.longitude}
-                />
-            </View>
+            <Borrow
+                latitude={this.props.latitude}
+                longitude={this.props.longitude}
+            />
         );
     }
 }

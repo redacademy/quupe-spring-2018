@@ -37,7 +37,7 @@ const Filter = props => (
             }}
             query={{
                 // available options: https://developers.google.com/places/web-service/autocomplete
-                key: 'AIzaSyC5l4jbFsh4kmmgzwC3Y5BOXmQJJaeZaQ8',
+                key: process.env['GOOGLEAPIKEY'],
                 language: 'en', // language of the results
                 types: 'address' // default: 'geocode'
             }}
@@ -47,36 +47,10 @@ const Filter = props => (
                 long: props.longitude
             }}
             styles={{
-                textInputContainer: {
-                    backgroundColor: assetColors.white,
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                    borderWidth: 1,
-                    borderRadius: 2,
-                    borderColor: assetColors.mediumGrey,
-                    width: '95%',
-                    height: 30,
-                    paddingLeft: 10
-                },
-                textInput: {
-                    paddingLeft: 0,
-                    fontSize: 14,
-                    height: 25,
-                    color: assetColors.mediumGrey,
-                    borderWidth: 0,
-                    margin: 0,
-                    marginBottom: 5
-                },
-                predefinedPlacesDescription: {
-                    color: '#1faadb'
-                },
-
-                listView: {
-                    position: 'absolute',
-                    marginTop: 35,
-                    backgroundColor: assetColors.white,
-                    width: '95%'
-                }
+                textInputContainer: styles.textInputContainer,
+                textInput: styles.textInput,
+                predefinedPlacesDescription: styles.predefinedPlacesDescription,
+                listView: styles.listView
             }}
             renderLeftButton={() => (
                 <Ionicons
