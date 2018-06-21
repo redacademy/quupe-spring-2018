@@ -11,16 +11,15 @@
 #import <React/RCTRootView.h>
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 
-@import GoogleMaps; //add this line if you want to use Google Maps
 
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-
-  [GMSServices provideAPIKey:@"AIzaSyCWIb6IFRKP0JHyIoplQ7uLjaDrFzWqgLM"];
-
   NSURL *jsCodeLocation;
+
+  [[FBSDKApplicationDelegate sharedInstance] application:application
+                           didFinishLaunchingWithOptions:launchOptions];
 
   jsCodeLocation = [[RCTBundleURLProvider sharedSettings] jsBundleURLForBundleRoot:@"index" fallbackResource:nil];
 
@@ -43,13 +42,13 @@
 }
 
 - (BOOL)application:(UIApplication *)application
-    openURL:(NSURL *)url
-    sourceApplication:(NSString *)sourceApplication
-    annotation:(id)annotation {
-    return [[FBSDKApplicationDelegate sharedInstance] application:application
-      openURL:url
-      sourceApplication:sourceApplication
-      annotation:annotation];
+            openURL:(NSURL *)url
+  sourceApplication:(NSString *)sourceApplication
+         annotation:(id)annotation {
+  return [[FBSDKApplicationDelegate sharedInstance] application:application
+                                                         openURL:url
+                                               sourceApplication:sourceApplication
+                                                      annotation:annotation];
 }
 
 @end
