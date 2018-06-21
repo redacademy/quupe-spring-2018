@@ -4,6 +4,8 @@
 
 # Xcode
 #
+Index/
+Podfile.lock
 Frameworks/
 Pods/
 build/
