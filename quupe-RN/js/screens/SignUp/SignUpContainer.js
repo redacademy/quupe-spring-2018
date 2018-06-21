@@ -2,11 +2,12 @@ import React, { Component } from 'react';
 import gql from 'graphql-tag';
 import { Mutation } from 'react-apollo';
 import { connect } from 'react-redux';
-import { View } from 'react-native';
+import { View, Image } from 'react-native';
 import PropTypes from 'prop-types';
 import SignUp from './SignUp';
 import { createUserToken } from '../../redux/modules/Token';
 import FBLoginButton from '../../components/FBLoginButton';
+import styles from './styles';
 
 const signUpMutation = gql`
     mutation signupUser(
@@ -29,7 +30,11 @@ class SignUpContainer extends Component {
 
     render() {
         return (
-            <View>
+            <View style={styles.container}>
+                <Image
+                    source={require('../../assets/images/qp_blue_org.png')}
+                    style={styles.headerImage}
+                />
                 <Mutation
                     mutation={signUpMutation}
                     onCompleted={data =>

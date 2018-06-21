@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Mutation } from 'react-apollo';
-import { View, Text } from 'react-native';
+import { View, Text, Image } from 'react-native';
 import { connect } from 'react-redux';
 import gql from 'graphql-tag';
 import PropTypes from 'prop-types';
@@ -38,7 +38,11 @@ class SignInContainer extends Component {
                 }
             >
                 {(authenticateUser, { data, loading, error }) => (
-                    <View>
+                    <View style={styles.container}>
+                        <Image
+                            source={require('../../assets/images/qp_blue_org.png')}
+                            style={styles.headerImage}
+                        />
                         <SignIn
                             authenticateUser={authenticateUser}
                             data={data}

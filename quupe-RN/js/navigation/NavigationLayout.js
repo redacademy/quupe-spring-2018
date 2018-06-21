@@ -20,6 +20,8 @@ import Favorites from '../screens/Favorites';
 import BorrowedItems from '../screens/BorrowedItems';
 import LentItems from '../screens/LentItems';
 import SignUpContainer from '../screens/SignUp';
+import LoginContainer from '../screens/Login';
+import AuthLoadingContainer from '../screens/AuthLoading';
 
 const homeStack = createStackNavigator(
     {
@@ -75,29 +77,33 @@ const accountStack = createStackNavigator(
     }
 );
 
-const authStack = createStackNavigator({
-    SignUp: SignUpContainer,
-    SignIn: SignInContainer
-    // TODO: Add a home page to complete the authStack navigator
-});
-
-const authSwitch = createSwitchNavigator(
+const authStack = createStackNavigator(
     {
-        Home: homeStack,
-        Auth: authStack
+        Login: LoginContainer,
+        SignUp: SignUpContainer,
+        SignIn: SignInContainer
     },
     {
-        initialRouteName: 'Auth'
+        navigationOptions: ({ navigation }) => ({
+            headerStyle: {
+                position: 'absolute',
+                backgroundColor: 'transparent',
+                zIndex: 100,
+                top: 0,
+                left: 0,
+                right: 0,
+                borderBottomWidth: 0
+            }
+        })
     }
 );
 
-export default createBottomTabNavigator(
+const appStack = createBottomTabNavigator(
     {
         Home: homeStack,
         Borrow: borrowStack,
         Lend: lendStack,
-        Account: accountStack,
-        signin: authStack
+        Account: accountStack
     },
     {
         navigationOptions: ({ navigation }) => ({
@@ -128,5 +134,16 @@ export default createBottomTabNavigator(
                 borderTopWidth: 1
             }
         }
+    }
+);
+
+export default createSwitchNavigator(
+    {
+        AuthLoading: AuthLoadingContainer,
+        App: appStack,
+        Auth: authStack
+    },
+    {
+        initialRouteName: 'AuthLoading'
     }
 );

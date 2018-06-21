@@ -4,7 +4,9 @@ import { View, Text, Image, TouchableOpacity, ScrollView } from 'react-native';
 import styles from './styles';
 
 const Account = props => {
-    const { fullname, bio, profileimage, items } = props.userData;
+    const {
+        fullname, bio, profileimage, items
+    } = props.userData;
     return (
         <ScrollView style={styles.accountWrapper}>
             <View style={styles.cardContainer}>
@@ -14,6 +16,11 @@ const Account = props => {
                 />
                 <View style={styles.nameContainer}>
                     <Text style={styles.fullname}>{fullname}</Text>
+                    <TouchableOpacity
+                        onPress={() => props.logOut(props.currentToken)}
+                    >
+                        <Text>LogOut</Text>
+                    </TouchableOpacity>
                 </View>
             </View>
             <Text style={styles.bio}>{bio}</Text>
@@ -106,12 +113,10 @@ const Account = props => {
 };
 
 Account.propTypes = {
-    nav: PropTypes.objectOf(
-        PropTypes.oneOfType([PropTypes.func, PropTypes.object])
-    ).isRequired,
-    userData: PropTypes.objectOf(
-        PropTypes.oneOfType([PropTypes.string, PropTypes.array])
-    ).isRequired
+    nav: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.func, PropTypes.object])).isRequired,
+    userData: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string, PropTypes.array])).isRequired,
+    logOut: PropTypes.func.isRequired,
+    currentToken: PropTypes.string.isRequired
 };
 
 export default Account;
