@@ -4,6 +4,7 @@
 
 # Xcode
 #
+Frameworks/
 Pods/
 build/
 *.pbxuser
