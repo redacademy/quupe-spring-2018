@@ -1,28 +1,28 @@
 import React from 'react';
 import { View } from 'react-native';
-import MapView from 'react-native-maps';
+import MapView, { Marker } from 'react-native-maps';
 
 import PropTypes from 'prop-types';
 
 import styles from './styles';
 
-const Map = ({ location }) => (
+const Map = ({ latitude, longitude }) => (
     <View style={styles.mapContainer}>
-        {location.latitude &&
-            location.longitude && (
+        {latitude &&
+            longitude && (
             <MapView
                 style={styles.map}
                 region={{
-                    latitude: location.latitude,
-                    longitude: location.longitude,
-                    latitudeDelta: 0.3,
-                    longitudeDelta: 0.3
+                    latitude,
+                    longitude,
+                    latitudeDelta: 0.1,
+                    longitudeDelta: 0.1
                 }}
             >
-                <MapView.Marker
+                <Marker
                     coordinate={{
-                        latitude: location.latitude,
-                        longitude: location.longitude
+                        latitude,
+                        longitude
                     }}
                     title="Your Location"
                 />
@@ -31,8 +31,14 @@ const Map = ({ location }) => (
     </View>
 );
 
+Map.defaultProps = {
+    latitude: 0,
+    longitude: 0
+};
+
 Map.propTypes = {
-    location: PropTypes.object.isRequired
+    latitude: PropTypes.number,
+    longitude: PropTypes.number
 };
 
 export default Map;
