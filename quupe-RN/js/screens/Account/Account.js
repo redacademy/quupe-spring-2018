@@ -1,12 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { View, Text, Image, TouchableOpacity } from 'react-native';
+import { View, Text, Image, TouchableOpacity, ScrollView } from 'react-native';
 import styles from './styles';
 
 const Account = props => {
     const { fullname, bio, profileimage, items } = props.userData;
     return (
-        <View style={styles.accountWrapper}>
+        <ScrollView style={styles.accountWrapper}>
             <View style={styles.cardContainer}>
                 <Image
                     style={styles.profileimage}
@@ -23,7 +23,8 @@ const Account = props => {
                         style={styles.box}
                         onPress={() =>
                             props.nav.navigate('MyItems', {
-                                userItems: items
+                                userItems: items,
+                                nav: props.nav
                             })
                         }
                     >
@@ -100,7 +101,7 @@ const Account = props => {
                     </TouchableOpacity>
                 </View>
             </View>
-        </View>
+        </ScrollView>
     );
 };
 

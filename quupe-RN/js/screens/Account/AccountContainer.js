@@ -16,6 +16,7 @@ const AccountQuery = gql`
             bio
             items {
                 id
+                title
                 price
                 priceOneWeek
                 priceOneMonth
