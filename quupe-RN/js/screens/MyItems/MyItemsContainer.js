@@ -1,12 +1,17 @@
 import React, { Component } from 'react';
-import { Text, View } from 'react-native';
+import PropTypes from 'prop-types';
+
 import MyItems from './MyItems';
 
 export class MyItemsContainer extends Component {
     render() {
-        console.log(this.props.navigation.state.params.userItems);
-        return <MyItems />;
+        const userItems = this.props.navigation.state.params.userItems;
+        return <MyItems userItems={userItems} nav={this.props.navigation} />;
     }
 }
-
+MyItemsContainer.propTypes = {
+    nav: PropTypes.objectOf(
+        PropTypes.oneOfType([PropTypes.func, PropTypes.object])
+    ).isRequired
+};
 export default MyItemsContainer;

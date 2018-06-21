@@ -2,7 +2,8 @@ const styles = {
     accountWrapper: {
         flexDirection: 'column',
         paddingLeft: 10,
-        paddingRight: 10
+        paddingRight: 10,
+        backgroundColor: '#fff'
     },
     cardContainer: {
         flexDirection: 'row',
@@ -40,7 +41,8 @@ const styles = {
         borderRadius: 10
     },
     blueBox: {
-        padding: 40
+        padding: 40,
+        flexWrap: 'wrap'
     }
 };
 export default styles;
