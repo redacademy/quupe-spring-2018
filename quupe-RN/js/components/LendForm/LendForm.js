@@ -28,7 +28,9 @@ import {
     setPriceOneMonth,
     setDescription,
     setLatitude,
-    setLongitude
+    setLongitude,
+    setLocation,
+    resetForm
 } from '../../redux/modules/SubmitItem';
 
 const options = {
@@ -107,6 +109,13 @@ class LendForm extends React.Component {
     updateLongitude = longitude => {
         this.props.dispatch(setLongitude(longitude));
     };
+
+    updateLocation = location => {
+        this.props.dispatch(setLocation(location));
+    };
+    resetForm = () => {
+        this.props.dispatch(resetForm());
+    };
     render() {
         const yearsData = [
             {
@@ -163,6 +172,7 @@ class LendForm extends React.Component {
                                 };
                                 console.log(newItem);
                                 addItem({ variables: newItem });
+                                this.resetForm();
                             }}
                             render={({
                                 handleSubmit,
@@ -170,6 +180,7 @@ class LendForm extends React.Component {
                                 invalid,
                                 values
                             }) => (
+<<<<<<< HEAD
                                     <View>
                                         <Text>Item Name</Text>
                                         <TextInput
@@ -252,6 +263,106 @@ class LendForm extends React.Component {
                                                 ImagePicker.showImagePicker(
                                                     options,
                                                     async response => {
+=======
+                                <View>
+                                    <Text>Item Name</Text>
+                                    <TextInput
+                                        onChangeText={title => {
+                                            this.updateTitle(title);
+                                        }}
+                                        placeholder="Item"
+                                        value={this.props.title}
+                                    />
+                                    <Dropdown
+                                        label="Category"
+                                        data={categorysData}
+                                        onChangeText={category => {
+                                            this.updateCategory(category);
+                                        }}
+                                        value={this.props.category}
+                                    />
+                                    <Dropdown
+                                        label="Year Bought"
+                                        data={yearsData}
+                                        onChangeText={year => {
+                                            this.updateYear(year);
+                                        }}
+                                        value={this.props.year}
+                                    />
+                                    <Dropdown
+                                        label="Condition"
+                                        data={conditionsData}
+                                        onChangeText={condition => {
+                                            this.updateCondition(condition);
+                                        }}
+                                        value={this.props.condition}
+                                    />
+                                    <TextInput
+                                        onChangeText={price => {
+                                            this.updateOriginalPrice(price);
+                                        }}
+                                        placeholder="Original Price"
+                                        value={this.props.originalPrice}
+                                    />
+                                    <GooglePlacesAutocomplete
+                                        placeholder="Enter Location"
+                                        minLength={2}
+                                        autoFocus={false}
+                                        returnKeyType="default"
+                                        fetchDetails
+                                        query={{
+                                            key:
+                                                'AIzaSyC5l4jbFsh4kmmgzwC3Y5BOXmQJJaeZaQ8',
+                                            language: 'en',
+                                            types: 'address'
+                                        }}
+                                        styles={{
+                                            textInputContainer: {
+                                                backgroundColor:
+                                                    'rgba(0,0,0,0)',
+                                                borderTopWidth: 0,
+                                                borderBottomWidth: 0
+                                            },
+                                            textInput: {
+                                                marginLeft: 0,
+                                                marginRight: 0,
+                                                height: 38,
+                                                color: '#5d5d5d',
+                                                fontSize: 16
+                                            },
+                                            predefinedPlacesDescription: {
+                                                color: '#1faadb'
+                                            }
+                                        }}
+                                        textInputProps={{
+                                            value: this.props.location
+                                        }}
+                                        onPress={(data, details = null) => {
+                                            console.log(details);
+                                            this.updateLongitude(details.geometry.location.lng);
+                                            this.updateLatitude(details.geometry.location.lat);
+                                            this.updateLocation(details.formatted_address);
+                                        }}
+                                        currentLocation={false}
+                                    />
+                                    <TextInput
+                                        onChangeText={description => {
+                                            this.updateDescription(description);
+                                        }}
+                                        placeholder="Description"
+                                        value={this.props.description}
+                                    />
+                                    <TouchableHighlight
+                                        onPress={() => {
+                                            ImagePicker.showImagePicker(
+                                                options,
+                                                async response => {
+                                                    console.log(
+                                                        'Response = ',
+                                                        response
+                                                    );
+                                                    if (response.error) {
+>>>>>>> message text input is now reset after submit, form values for lend form is also reset after submit
                                                         console.log(
                                                             'Response = ',
                                                             response
@@ -302,6 +413,7 @@ class LendForm extends React.Component {
                                                                     console.error('Error uploading image'));
                                                         }
                                                     }
+<<<<<<< HEAD
                                                 );
                                             }}
                                         >
@@ -331,6 +443,41 @@ class LendForm extends React.Component {
                                         >
                                             <Text onPress={handleSubmit}>
                                                 Create Post
+=======
+                                                }
+                                            );
+                                        }}
+                                    >
+                                        <Text>Upload Image</Text>
+                                    </TouchableHighlight>
+                                    <TextInput
+                                        onChangeText={price => {
+                                            this.updatePrice(price);
+                                        }}
+                                        placeholder="Price One Day"
+                                        value={this.props.price}
+                                    />
+                                    <TextInput
+                                        onChangeText={price => {
+                                            this.updatePriceOneWeek(price);
+                                        }}
+                                        placeholder="Price One Week"
+                                        value={this.props.priceOneWeek}
+                                    />
+
+                                    <TextInput
+                                        onChangeText={price => {
+                                            this.updatePriceOneMonth(price);
+                                        }}
+                                        placeholder="Price One Month"
+                                        value={this.props.priceOneMonth}
+                                    />
+                                    <TouchableOpacity
+                                        disabled={invalid || pristine}
+                                    >
+                                        <Text onPress={handleSubmit}>
+                                            Create Post
+>>>>>>> message text input is now reset after submit, form values for lend form is also reset after submit
                                         </Text>
                                         </TouchableOpacity>
                                     </View>
@@ -355,5 +502,6 @@ export default graphql(createItem, { name: 'createItem' })(connect(state => ({
     priceOneMonth: state.SubmitItem.priceOneMonth,
     description: state.SubmitItem.description,
     latitude: state.SubmitItem.latitude,
-    longitude: state.SubmitItem.longitude
+    longitude: state.SubmitItem.longitude,
+    location: state.SubmitItem.location
 }))(LendForm));
