@@ -10,7 +10,7 @@ export class MyItemsContainer extends Component {
     }
 }
 MyItemsContainer.propTypes = {
-    nav: PropTypes.objectOf(
+    navigation: PropTypes.objectOf(
         PropTypes.oneOfType([PropTypes.func, PropTypes.object])
     ).isRequired
 };

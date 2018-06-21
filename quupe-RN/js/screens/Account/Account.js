@@ -4,9 +4,7 @@ import { View, Text, Image, TouchableOpacity, ScrollView } from 'react-native';
 import styles from './styles';
 
 const Account = props => {
-    const {
-        fullname, bio, profileimage, items
-    } = props.userData;
+    const { fullname, bio, profileimage, items } = props.userData;
     return (
         <ScrollView style={styles.accountWrapper}>
             <View style={styles.cardContainer}>
@@ -62,7 +60,9 @@ const Account = props => {
                         }
                     >
                         <View style={styles.blueBox}>
-                            <Text>Transaction History</Text>
+                            <Text style={styles.blueBoxText}>
+                                Transaction History
+                            </Text>
                         </View>
                     </TouchableOpacity>
 
@@ -84,7 +84,8 @@ const Account = props => {
                         style={styles.box}
                         onPress={() =>
                             props.nav.navigate('BorrowedItems', {
-                                userItems: items
+                                borrowed: allBorrowed,
+                                nav: props.nav
                             })
                         }
                     >
@@ -97,7 +98,8 @@ const Account = props => {
                         style={styles.box}
                         onPress={() =>
                             props.nav.navigate('LentItems', {
-                                userItems: items
+                                userItems: items,
+                                nav: props.nav
                             })
                         }
                     >
@@ -113,8 +115,12 @@ const Account = props => {
 };
 
 Account.propTypes = {
-    nav: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.func, PropTypes.object])).isRequired,
-    userData: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string, PropTypes.array])).isRequired,
+    nav: PropTypes.objectOf(
+        PropTypes.oneOfType([PropTypes.func, PropTypes.object])
+    ).isRequired,
+    userData: PropTypes.objectOf(
+        PropTypes.oneOfType([PropTypes.string, PropTypes.array])
+    ).isRequired,
     logOut: PropTypes.func.isRequired,
     currentToken: PropTypes.string.isRequired
 };
