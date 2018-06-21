@@ -27,6 +27,25 @@ const itemData = gql`
     }
 `;
 
+const itemData = gql`
+    query {
+        allItems(filter: { category: "Games" }) {
+            title
+            originalPrice
+            image
+            condition
+            year
+            category
+            price
+            priceOneWeek
+            priceOneMonth
+            description
+            latitude
+            longitude
+        }
+    }
+`;
+
 class HomeContainer extends Component {
     static navigationOptions = { header: null };
     render() {
@@ -35,8 +54,8 @@ class HomeContainer extends Component {
                 style={styles.tabUnderlineStyle}
                 renderTabBar={() => (
                     <MaskTabBar
-                        someProp={'here'}
-                        showMask={true}
+                        someProp="here"
+                        showMask
                         maskMode="light"
                         style={{ backgroundColor: '#ffffff' }}
                     />

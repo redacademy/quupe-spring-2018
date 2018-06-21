@@ -5,16 +5,15 @@ import {
     createBottomTabNavigator,
     createSwitchNavigator
 } from 'react-navigation';
-
 import Ionicons from 'react-native-vector-icons/Ionicons';
-
 import HomeContainer from '../screens/Home';
 import BorrowContainer from '../screens/Borrow';
 import LendContainer from '../screens/Lend';
 import AccountContainer from '../screens/Account';
 import SignInContainer from '../screens/SignIn';
 import MyItems from '../screens/MyItems';
-import Messages from '../screens/Messages';
+import MessagesContainer from '../screens/Messages';
+import MessagesRoomContainer from '../screens/MessagingRoom';
 import TransactionHistory from '../screens/TransactionHistory';
 import Favorites from '../screens/Favorites';
 import BorrowedItems from '../screens/BorrowedItems';
@@ -24,6 +23,17 @@ import WelcomeContainer from '../screens/Welcome';
 import AuthLoadingContainer from '../screens/AuthLoading';
 import SingleItemContainer from '../screens/SingleItem';
 import CalendarContainer from '../screens/Calendar';
+
+export const MessagesModal = createStackNavigator(
+    {
+        Messages: MessagesContainer
+    },
+    {
+        navigationOptions: ({ navigation }) => ({
+            headerStyle: {}
+        })
+    }
+);
 
 const homeStack = createStackNavigator(
     {
@@ -68,7 +78,7 @@ const accountStack = createStackNavigator(
         MyItems,
         BorrowedItems,
         LentItems,
-        Messages,
+        MessagesRoomContainer,
         TransactionHistory
     },
     {

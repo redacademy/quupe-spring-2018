@@ -1,67 +1,76 @@
 {
-  "name": "quupe",
-  "version": "0.0.1",
-  "private": true,
-  "scripts": {
-    "start": "node node_modules/react-native/local-cli/cli.js start",
-    "test": "jest"
-  },
-  "dependencies": {
-    "@material-ui/core": "^1.2.1",
-    "adm-zip": "^0.4.11",
-    "apollo-boost": "^0.1.7",
-    "apollo-client": "^2.3.2",
-    "babel-eslint": "^8.2.3",
-    "eslint": "^4.19.1",
-    "final-form": "^4.8.2",
-    "graphql": "^0.13.2",
-    "graphql-tag": "^2.9.2",
-    "instantsearch.js": "^2.8.0",
-    "moment": "^2.22.2",
-    "plist": "^3.0.1",
-    "prop-types": "^15.6.1",
-    "react": "16.3.1",
-    "react-apollo": "^2.1.5",
-    "react-final-form": "^3.6.2",
-    "react-native": "0.55.4",
-    "react-native-calendars": "^1.19.3",
-    "react-native-dotenv": "^0.1.1",
-    "react-native-elements": "^0.19.1",
-    "react-native-fbsdk": "^0.7.0",
-    "react-native-google-places-autocomplete": "^1.3.6",
-    "react-native-image-picker": "^0.26.10",
-    "react-native-maps": "^0.21.0",
-    "react-native-material-dropdown": "^0.11.1",
-    "react-native-scrollable-tab-view": "^0.8.0",
-    "react-native-scrollable-tab-view-mask-bar": "^1.0.8",
-    "react-native-modal-overlay": "^1.2.3",
-    "react-native-vector-icons": "^4.6.0",
-    "react-navigation": "^2.3.0",
-    "react-redux": "^5.0.7",
-    "realm": "^2.8.2",
-    "redux": "^4.0.0",
-    "redux-thunk": "^2.3.0",
-    "rn-round-checkbox": "^0.3.4",
-    "xcode": "^1.0.0"
-  },
-  "devDependencies": {
-    "babel-jest": "23.0.1",
-    "babel-preset-react-native": "4.0.0",
-    "eslint-config-airbnb": "^16.1.0",
-    "eslint-config-airbnb-base": "^12.1.0",
-    "eslint-plugin-babel": "^5.1.0",
-    "eslint-plugin-import": "^2.12.0",
-    "eslint-plugin-jsx-a11y": "^6.0.3",
-    "eslint-plugin-react": "^7.9.1",
-    "jest": "23.1.0",
-    "react-test-renderer": "16.3.1"
-  },
-  "jest": {
-    "preset": "react-native"
-  },
-  "rnpm": {
-    "assets": [
-      "./assets/fonts"
-    ]
-  }
+    "name": "quupe",
+    "version": "0.0.1",
+    "private": true,
+    "scripts": {
+        "start": "node node_modules/react-native/local-cli/cli.js start",
+        "test": "jest"
+    },
+    "dependencies": {
+        "@material-ui/core": "^1.2.1",
+        "adm-zip": "^0.4.11",
+        "apollo-boost": "^0.1.7",
+        "apollo-cache-inmemory": "^1.2.5",
+        "apollo-client": "^2.3.5",
+        "apollo-link": "^1.2.2",
+        "apollo-link-error": "^1.1.0",
+        "apollo-link-http": "^1.5.4",
+        "apollo-link-ws": "^1.0.8",
+        "apollo-utilities": "^1.0.16",
+        "babel-eslint": "^8.2.3",
+        "eslint": "^4.19.1",
+        "final-form": "^4.8.2",
+        "graphql": "^0.13.2",
+        "graphql-tag": "^2.9.2",
+        "instantsearch.js": "^2.8.0",
+        "moment": "^2.22.2",
+        "plist": "^3.0.1",
+        "prop-types": "^15.6.1",
+        "react": "16.3.1",
+        "react-apollo": "^2.1.5",
+        "react-final-form": "^3.6.2",
+        "react-native": "0.55.4",
+        "react-native-calendars": "^1.19.3",
+        "react-native-dotenv": "^0.1.1",
+        "react-native-elements": "^0.19.1",
+        "react-native-fbsdk": "^0.7.0",
+        "react-native-google-places-autocomplete": "^1.3.6",
+        "react-native-image-picker": "^0.26.10",
+        "react-native-maps": "^0.21.0",
+        "react-native-material-dropdown": "^0.11.1",
+        "react-native-scrollable-tab-view": "^0.8.0",
+        "react-native-scrollable-tab-view-mask-bar": "^1.0.8",
+        "react-native-modal-overlay": "^1.2.3",
+        "react-native-step-indicator": "^0.0.9",
+        "react-native-vector-icons": "^4.6.0",
+        "react-navigation": "^2.3.0",
+        "react-redux": "^5.0.7",
+        "realm": "^2.8.2",
+        "redux": "^4.0.0",
+        "redux-thunk": "^2.3.0",
+        "rn-round-checkbox": "^0.3.4",
+        "rn-viewpager": "^1.2.9",
+        "subscriptions-transport-ws": "^0.9.11",
+        "xcode": "^1.0.0"
+    },
+    "devDependencies": {
+        "babel-jest": "23.0.1",
+        "babel-preset-react-native": "4.0.0",
+        "eslint-config-airbnb": "^16.1.0",
+        "eslint-config-airbnb-base": "^12.1.0",
+        "eslint-plugin-babel": "^5.1.0",
+        "eslint-plugin-import": "^2.12.0",
+        "eslint-plugin-jsx-a11y": "^6.0.3",
+        "eslint-plugin-react": "^7.9.1",
+        "jest": "23.1.0",
+        "react-test-renderer": "16.3.1"
+    },
+    "jest": {
+        "preset": "react-native"
+    },
+    "rnpm": {
+        "assets": [
+            "./assets/fonts"
+        ]
+    }
 }

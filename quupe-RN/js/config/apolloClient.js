@@ -1,11 +1,34 @@
-import { ApolloClient, HttpLink, InMemoryCache } from 'apollo-boost';
+import { ApolloClient } from 'apollo-client';
+import { InMemoryCache } from 'apollo-cache-inmemory';
+import { HttpLink } from 'apollo-link-http';
+import { onError } from 'apollo-link-error';
+import { ApolloLink, split } from 'apollo-link';
+import { WebSocketLink } from 'apollo-link-ws';
+import { getMainDefinition } from 'apollo-utilities';
 
 const httpLink = new HttpLink({
     uri: 'https://api.graph.cool/simple/v1/cjidp1w9z1cn30149s8454eyu'
 });
 
+const wsLink = new WebSocketLink({
+    uri: 'wss://subscriptions.graph.cool/v1/cjidp1w9z1cn30149s8454eyu',
+    options: {
+        reconnect: true
+    }
+});
+
+const link = split(
+    // split based on operation type
+    ({ query }) => {
+        const { kind, operation } = getMainDefinition(query);
+        return kind === 'OperationDefinition' && operation === 'subscription';
+    },
+    wsLink,
+    httpLink
+);
+
 const client = new ApolloClient({
-    link: httpLink,
+    link,
     cache: new InMemoryCache()
 });
 

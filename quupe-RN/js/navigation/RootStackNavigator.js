@@ -1,12 +1,13 @@
 import { createStackNavigator } from 'react-navigation';
-import NavigationLayout from './NavigationLayout';
+import NavigationLayout, { MessagesModal } from './NavigationLayout';
 
 export default createStackNavigator(
-  {
-    Layout: NavigationLayout
-  },
-  {
-    mode: 'modal',
-    headerMode: 'none'
-  }
+    {
+        Layout: NavigationLayout,
+        MessagesModal
+    },
+    {
+        mode: 'modal',
+        headerMode: 'none'
+    }
 );
