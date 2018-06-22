@@ -37,6 +37,15 @@ const styles = StyleSheet.create({
         margin: 20,
         color: assetColors.darkGrey,
         alignSelf: 'center'
+    },
+    container: {
+        marginTop: 20
+    },
+    headerImage: {
+        width: 150,
+        height: 50,
+        alignSelf: 'center',
+        marginBottom: 25
     }
 });
 

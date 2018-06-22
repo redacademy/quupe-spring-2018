@@ -4,8 +4,10 @@ import { connect } from 'react-redux';
 import { Text } from 'react-native';
 import { Query } from 'react-apollo';
 import gql from 'graphql-tag';
+import PropTypes from 'prop-types';
 import { queryToken } from '../../config/models';
 import Account from './Account';
+import { deleteUserToken } from '../../redux/modules/Token';
 
 const AccountQuery = gql`
     query User($id: ID!) {
@@ -27,9 +29,15 @@ const AccountQuery = gql`
                 longitude
                 latitude
             }
-            borrow {
-                id
-                title
+            allBorrowed {
+                startDate
+                endDate
+                item {
+                    id
+                    title
+                    image
+                    price
+                }
             }
             rooms {
                 id
@@ -42,8 +50,22 @@ const AccountQuery = gql`
 `;
 
 class AccountContainer extends Component {
+    logOut(token) {
+        this.props.dispatch(deleteUserToken(token));
+        this.props.navigation.navigate('AuthLoading');
+    }
+
     render() {
-        const currentUser = Array.from(queryToken())[0].id;
+        const currentUser =
+            Array.from(this.props.token.token)[0] &&
+            Array.from(this.props.token.token)[0].id;
+        const currentToken =
+            Array.from(this.props.token.token)[0] &&
+            Array.from(this.props.token.token)[0].token;
+        if (!currentUser) {
+            return <Text>Not Logged in</Text>;
+            // TODO: Add a signUp button to reroute to signup page instead
+        }
         return (
             <Query query={AccountQuery} variables={{ id: currentUser }}>
                 {({ loading, error, data }) => {
@@ -54,6 +76,8 @@ class AccountContainer extends Component {
                         <Account
                             userData={userData}
                             nav={this.props.navigation}
+                            currentToken={currentToken}
+                            logOut={this.logOut.bind(this)}
                         />
                     );
                 }}
@@ -61,6 +85,11 @@ class AccountContainer extends Component {
         );
     }
 }
+
+AccountContainer.propTypes = {
+    dispatch: PropTypes.func.isRequired,
+    navigation: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.func, PropTypes.object])).isRequired
+};
 
 export default connect(state => ({
     token: state.Token

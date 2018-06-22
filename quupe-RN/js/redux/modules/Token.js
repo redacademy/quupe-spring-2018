@@ -53,7 +53,7 @@ export const deleteUserToken = token => dispatch => {
 };
 
 const initialState = {
-    token: '',
+    token: queryToken(),
     error: '',
     isError: false,
     isCancelled: false
