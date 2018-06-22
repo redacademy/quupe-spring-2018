@@ -4,6 +4,7 @@
 
 # Xcode
 #
+.env
 Index/
 Podfile.lock
 Frameworks/
