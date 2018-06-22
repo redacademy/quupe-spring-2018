@@ -10,7 +10,6 @@ import styles from './styles';
 const Borrow = ({ latitude, longitude }) => (
     <View style={styles.page}>
         <Filter />
-
         <Map latitude={latitude} longitude={longitude} />
     </View>
 );

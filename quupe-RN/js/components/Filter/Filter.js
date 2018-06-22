@@ -7,12 +7,13 @@ import { SearchBar } from 'react-native-elements';
 import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
 import PropTypes from 'prop-types';
 
+import { GOOGLE_API_KEY } from 'react-native-dotenv';
+
 import { getLatitude, getLongitude } from '../../redux/modules/Location';
 
 import styles from './styles';
 import { assetColors } from '../../assets/styles';
 
-// TODO: Change for React-Native-Elements to Algolia when all hooked up
 
 const Filter = props => (
     <View style={styles.filterWrapper}>
@@ -30,19 +31,15 @@ const Filter = props => (
             returnKeyType="default"
             fetchDetails
             onPress={(data, details = null) => {
-                // 'details' is provided when fetchDetails = true
-
                 props.dispatch(getLatitude(details.geometry.location.lat));
                 props.dispatch(getLongitude(details.geometry.location.lng));
             }}
             query={{
-                // available options: https://developers.google.com/places/web-service/autocomplete
-                key: process.env['GOOGLEAPIKEY'],
+                key: GOOGLE_API_KEY,
                 language: 'en', // language of the results
                 types: 'address' // default: 'geocode'
             }}
             GoogleReverseGeocodingQuery={{
-                // available options for GoogleReverseGeocoding API : https://developers.google.com/maps/documentation/geocoding/intro
                 lat: props.latitude,
                 long: props.longitude
             }}

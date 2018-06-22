@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-
 import PropTypes from 'prop-types';
+
+import { GOOGLE_API_KEY } from 'react-native-dotenv';
 
 import {
     getCurrentLocationName,
@@ -11,16 +12,15 @@ import {
 } from '../../redux/modules/Location';
 import Borrow from './Borrow';
 
-// Maps is thanks to https://medium.com/@princessjanf/react-native-maps-with-direction-from-current-location-ab1a371732c2
 class BorrowContainer extends Component {
     componentDidMount() {
         navigator.geolocation.getCurrentPosition(
             position => {
                 fetch(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${
                     position.coords.latitude
-                },${
+                    },${
                     position.coords.longitude
-                }&key=AIzaSyC5l4jbFsh4kmmgzwC3Y5BOXmQJJaeZaQ8`)
+                    }&key=${GOOGLE_API_KEY}`)
                     .then(response => response.json())
                     .then(res =>
                         this.props.dispatch(getCurrentLocationName(res.results[0].formatted_address)));
