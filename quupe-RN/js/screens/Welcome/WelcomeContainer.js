@@ -1,19 +1,19 @@
 import React, { Component } from 'react';
 import { ImageBackground } from 'react-native';
-import Login from './Login';
+import Welcome from './Welcome';
 import styles from './styles';
 
-class LoginContainer extends Component {
+class WelcomeContainer extends Component {
     render() {
         return (
             <ImageBackground
                 source={require('../../assets/images/quupe-app-background.jpeg')}
                 style={styles.backgroundImage}
             >
-                <Login nav={this.props.navigation} />
+                <Welcome nav={this.props.navigation} />
             </ImageBackground>
         );
     }
 }
 
-export default LoginContainer;
+export default WelcomeContainer;

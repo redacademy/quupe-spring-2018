@@ -2,7 +2,7 @@ import React from 'react';
 import { View, Text, Image, TouchableOpacity } from 'react-native';
 import styles from './styles';
 
-const Login = props => (
+const Welcome = props => (
     <View style={styles.loginScreen}>
         <Image
             source={require('../../assets/images/qp_blue_org.png')}
@@ -33,4 +33,4 @@ const Login = props => (
     </View>
 );
 
-export default Login;
+export default Welcome;

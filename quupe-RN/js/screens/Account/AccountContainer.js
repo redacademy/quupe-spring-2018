@@ -56,8 +56,16 @@ class AccountContainer extends Component {
     }
 
     render() {
-        const currentUser = Array.from(queryToken())[0].id;
-        const currentToken = Array.from(this.props.token.token)[0].token;
+        const currentUser =
+            Array.from(this.props.token.token)[0] &&
+            Array.from(this.props.token.token)[0].id;
+        const currentToken =
+            Array.from(this.props.token.token)[0] &&
+            Array.from(this.props.token.token)[0].token;
+        if (!currentUser) {
+            return <Text>Not Logged in</Text>;
+            // TODO: Add a signUp button to reroute to signup page instead
+        }
         return (
             <Query query={AccountQuery} variables={{ id: currentUser }}>
                 {({ loading, error, data }) => {

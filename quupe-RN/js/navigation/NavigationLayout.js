@@ -20,7 +20,7 @@ import Favorites from '../screens/Favorites';
 import BorrowedItems from '../screens/BorrowedItems';
 import LentItems from '../screens/LentItems';
 import SignUpContainer from '../screens/SignUp';
-import LoginContainer from '../screens/Login';
+import WelcomeContainer from '../screens/Welcome';
 import AuthLoadingContainer from '../screens/AuthLoading';
 
 const homeStack = createStackNavigator(
@@ -79,7 +79,7 @@ const accountStack = createStackNavigator(
 
 const authStack = createStackNavigator(
     {
-        Login: LoginContainer,
+        Welcome: WelcomeContainer,
         SignUp: SignUpContainer,
         SignIn: SignInContainer
     },
