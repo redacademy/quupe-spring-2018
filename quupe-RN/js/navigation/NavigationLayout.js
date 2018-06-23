@@ -77,9 +77,6 @@ const accountStack = createStackNavigator(
     }
 );
 
-<<<<<<< HEAD
-const authStack = createStackNavigator(
-=======
 const authStack = createStackNavigator({
     SignIn: SignInContainer,
     SignUp: SignUpContainer
@@ -88,7 +85,6 @@ const authStack = createStackNavigator({
 });
 
 const authSwitch = createSwitchNavigator(
->>>>>>> borrowed items, lent items and my items all receiving proper items according to their time limit.
     {
         Welcome: WelcomeContainer,
         SignUp: SignUpContainer,

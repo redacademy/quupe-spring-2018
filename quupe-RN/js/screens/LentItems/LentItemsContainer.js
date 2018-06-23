@@ -22,44 +22,52 @@ const allItemsQuery = gql`
     }
 `;
 
-const newDay = moment()
+const startOfToday = moment()
     .startOf('day')
     .format();
 
 class LentItemsContainer extends Component {
     render() {
         const currentUser = Array.from(queryToken())[0].id;
-        const userLentItems = [];
-        const userActiveLentItems = [];
-        const userExpiredLentItems = [];
+
         return (
             <Query query={allItemsQuery}>
                 {({ loading, error, data }) => {
                     if (loading) return <Text>Loading</Text>;
                     if (error) return <Text>Error</Text>;
                     const itemsData = data.allItems;
-                    itemsData.map(item => {
-                        if (
+                    const userLentItems = itemsData.filter(item => {
+                        return (
                             item.owner.id === currentUser &&
                             item.allBorrowers[0]
-                        ) {
-                            userLentItems.push(item);
-                        }
+                        );
                     });
-                    userLentItems.map(item => {
-                        if (
+
+                    const userActiveLentItems = userLentItems.filter(item => {
+                        return (
                             moment(
                                 item.allBorrowers[0].endDate,
                                 'MM/DD/YYYY',
                                 true
-                            ).format() > newDay
-                        ) {
-                            userActiveLentItems.push(item);
-                        } else {
-                            userExpiredLentItems.push(item);
-                        }
+                            ).format() > startOfToday
+                        );
                     });
 
+                    const userExpiredLentItems = userLentItems.filter(item => {
+                        return (
+                            moment(
+                                item.allBorrowers[0].endDate,
+                                'MM/DD/YYYY',
+                                true
+                            ).format() <= startOfToday
+                        );
+                    });
+                    console.log('USER LENT ITEMS', userLentItems);
+                    console.log('USER ACTIVE LENT ITEMS', userActiveLentItems);
+                    console.log(
+                        'USER EXPIRED LENT ITEMS',
+                        userExpiredLentItems
+                    );
                     return (
                         <LentItems
                             activeLentItems={userActiveLentItems}

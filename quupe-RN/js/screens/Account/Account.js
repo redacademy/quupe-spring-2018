@@ -4,7 +4,7 @@ import { View, Text, Image, TouchableOpacity, ScrollView } from 'react-native';
 import styles from './styles';
 
 const Account = props => {
-    const { fullname, bio, profileimage, items } = props.userData;
+    const { fullname, bio, profileimage, items, allBorrowed } = props.userData;
     return (
         <ScrollView style={styles.accountWrapper}>
             <View style={styles.cardContainer}>
