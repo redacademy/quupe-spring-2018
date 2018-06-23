@@ -1,6 +1,7 @@
 types: ./types.graphql
 
 functions:
+
   signup:
     type: resolver
     schema: src/signup.graphql

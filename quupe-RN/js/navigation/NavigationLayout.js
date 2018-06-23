@@ -77,14 +77,7 @@ const accountStack = createStackNavigator(
     }
 );
 
-const authStack = createStackNavigator({
-    SignIn: SignInContainer,
-    SignUp: SignUpContainer
-
-    // TODO: Add a home page to complete the authStack navigator
-});
-
-const authSwitch = createSwitchNavigator(
+const authSwitch = createStackNavigator(
     {
         Welcome: WelcomeContainer,
         SignUp: SignUpContainer,
@@ -148,7 +141,7 @@ export default createSwitchNavigator(
     {
         AuthLoading: AuthLoadingContainer,
         App: appStack,
-        Auth: authStack
+        Auth: authSwitch
     },
     {
         initialRouteName: 'AuthLoading'
