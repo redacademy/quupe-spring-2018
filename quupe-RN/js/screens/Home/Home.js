@@ -1,12 +1,20 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, Image } from 'react-native';
 
-const Home = () => {
-  return (
+const Home = ({ itemData }) => (
     <View>
-      <Text>Home Stateless</Text>
+        {itemData.map((item, index) => (
+            <View>
+                <Image
+                    style={{ width: 50, height: 50 }}
+                    source={{
+                        uri: `${item.image && item.image}`
+                    }}
+                />
+                <Text>{item.title}</Text>
+                <Text>{item.originalPrice}</Text>
+            </View>
+        ))}
     </View>
-  );
-};
-
+);
 export default Home;
