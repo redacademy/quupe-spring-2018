@@ -22,6 +22,8 @@ import LentItems from '../screens/LentItems';
 import SignUpContainer from '../screens/SignUp';
 import WelcomeContainer from '../screens/Welcome';
 import AuthLoadingContainer from '../screens/AuthLoading';
+import SingleItemContainer from '../screens/SingleItem';
+import CalendarContainer from '../screens/Calendar';
 
 const homeStack = createStackNavigator(
     {
@@ -74,6 +76,16 @@ const accountStack = createStackNavigator(
             title: 'Account',
             headerTitleStyle: { color: assetColors.white }
         })
+    }
+);
+
+const itemStack = createStackNavigator(
+    {
+        Item: SingleItemContainer,
+        Calendar: CalendarContainer
+    },
+    {
+        headerMode: 'none'
     }
 );
 

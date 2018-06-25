@@ -5,11 +5,11 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         zIndex: 1,
-        height: '65%'
+        height: '100%'
     },
     map: {
         height: '100%',
-        width: '90%'
+        width: '100%'
     }
 });
 
