@@ -32,6 +32,7 @@ const SignUp = props => (
                             {...input}
                             style={styles.input}
                             placeholder="Email"
+                            autoCapitalize="none"
                         />
                     )}
                 />
@@ -42,6 +43,8 @@ const SignUp = props => (
                             {...input}
                             style={styles.input}
                             placeholder="Password"
+                            secureTextEntry
+                            autoCapitalize="none"
                         />
                     )}
                 />
