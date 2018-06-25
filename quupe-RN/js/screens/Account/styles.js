@@ -41,8 +41,8 @@ const styles = {
         borderRadius: 10
     },
     blueBox: {
-        padding: 40,
-        flexWrap: 'wrap'
+        alignSelf: 'center',
+        alignItems: 'center'
     }
 };
 export default styles;

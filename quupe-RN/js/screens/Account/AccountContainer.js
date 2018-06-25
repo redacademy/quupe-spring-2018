@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-
+import PropTypes from 'prop-types';
 import { Text } from 'react-native';
 import { Query } from 'react-apollo';
 import gql from 'graphql-tag';
-import PropTypes from 'prop-types';
+
 import { queryToken } from '../../config/models';
 import Account from './Account';
 import { deleteUserToken } from '../../redux/modules/Token';
@@ -88,7 +88,9 @@ class AccountContainer extends Component {
 
 AccountContainer.propTypes = {
     dispatch: PropTypes.func.isRequired,
-    navigation: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.func, PropTypes.object])).isRequired
+    navigation: PropTypes.objectOf(
+        PropTypes.oneOfType([PropTypes.func, PropTypes.object])
+    ).isRequired
 };
 
 export default connect(state => ({

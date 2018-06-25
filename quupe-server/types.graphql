@@ -15,7 +15,6 @@ type Item @model {
   condition: String!
   year: String!
   description: String! @migrationValue(value: String)
-  category: String! @migrationValue(value: CategoryEnum)
   originalPrice: String! @migrationValue(value: String)
   category: String! @migrationValue(value: CategoryEnum)
   price: String!
@@ -23,7 +22,7 @@ type Item @model {
   priceOneMonth: String! @migrationValue(value: String)
   latitude: Float! @migrationValue(value: "0")
   longitude: Float! @migrationValue(value: "0")
-  borrow: User @relation(name: "UserOnItem")
+  allBorrowers: [BorrowTransactions!]! @relation(name: "TransactionsOnItem")
   owner: User @relation(name: "ItemsOnUser")
 
 }
@@ -38,9 +37,17 @@ type User @model {
   fullname: String 
   profileimage: String
   bio: String
-  borrow: [Item!]! @relation(name: "UserOnItem")
+  allBorrowed: [BorrowTransactions!]! @relation(name: "TransactionsOnUser")
   rooms: [Room!]! @relation(name: "UserOnRoom")
   messages: [Messages!]! @relation(name: "MessagesOnUser")
+}
+
+type BorrowTransactions @model {
+     id: ID! @isUnique
+     startDate: String!
+     endDate: String!
+     item: [Item!]! @relation(name: "TransactionsOnItem")
+     user: [User!]! @relation(name: "TransactionsOnUser")
 }
 
 type Room @model {

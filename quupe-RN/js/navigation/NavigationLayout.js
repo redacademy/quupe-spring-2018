@@ -77,7 +77,14 @@ const accountStack = createStackNavigator(
     }
 );
 
-const authStack = createStackNavigator(
+const authStack = createStackNavigator({
+    SignIn: SignInContainer,
+    SignUp: SignUpContainer
+
+    // TODO: Add a home page to complete the authStack navigator
+});
+
+const authSwitch = createSwitchNavigator(
     {
         Welcome: WelcomeContainer,
         SignUp: SignUpContainer,
