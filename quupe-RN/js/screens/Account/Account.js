@@ -55,7 +55,8 @@ const Account = props => {
                         style={styles.box}
                         onPress={() =>
                             props.nav.navigate('TransactionHistory', {
-                                userItems: items
+                                userItems: items,
+                                nav: props.nav
                             })
                         }
                     >

@@ -75,7 +75,8 @@ const accountStack = createStackNavigator(
         navigationOptions: ({ navigation }) => ({
             title: 'Account',
             headerTitleStyle: { color: assetColors.white }
-        })
+        }),
+        headerMode: 'none'
     }
 );
 

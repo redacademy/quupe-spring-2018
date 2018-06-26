@@ -11,12 +11,17 @@ const allItemsQuery = gql`
     query {
         allItems {
             title
+            image
+            price
+            priceOneWeek
+            priceOneMonth
             owner {
                 id
             }
             allBorrowers {
                 id
                 endDate
+                startDate
             }
         }
     }
@@ -38,6 +43,7 @@ class LentItemsContainer extends Component {
                     const itemsData = data.allItems;
                     const userLentItems = itemsData.filter(item => {
                         return (
+                            item.owner &&
                             item.owner.id === currentUser &&
                             item.allBorrowers[0]
                         );
@@ -62,12 +68,7 @@ class LentItemsContainer extends Component {
                             ).format() <= startOfToday
                         );
                     });
-                    console.log('USER LENT ITEMS', userLentItems);
-                    console.log('USER ACTIVE LENT ITEMS', userActiveLentItems);
-                    console.log(
-                        'USER EXPIRED LENT ITEMS',
-                        userExpiredLentItems
-                    );
+
                     return (
                         <LentItems
                             activeLentItems={userActiveLentItems}

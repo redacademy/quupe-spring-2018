@@ -4,11 +4,21 @@ import { assetColors } from '../../assets/styles';
 const window = Dimensions.get('window');
 
 const styles = {
+    backButton: {
+        position: 'absolute',
+        left: 10,
+        margin: 20,
+        marginTop: 40
+    },
     itemsContainer: {
         flexDirection: 'row',
         flexWrap: 'wrap',
-        backgroundColor: '#fff',
-        height: '100%'
+        backgroundColor: '#fff'
+    },
+    allItemsWrapped: {
+        marginTop: 80,
+        flexDirection: 'row',
+        flexWrap: 'wrap'
     },
     image: {
         width: window.width / 2.2,
@@ -36,7 +46,7 @@ const styles = {
     price: {
         position: 'absolute',
         right: 0,
-        bottom: 17.7,
+        bottom: 17.5,
         fontSize: 20,
         backgroundColor: '#fff'
     }

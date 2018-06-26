@@ -1,27 +1,37 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Text, Image, TouchableOpacity, ScrollView } from 'react-native';
+import { Text, Image, TouchableOpacity, ScrollView, View } from 'react-native';
+import Icon from 'react-native-vector-icons/Ionicons';
 import styles from './styles';
 
 const MyItems = props => {
     return (
         <ScrollView contentContainerStyle={styles.itemsContainer}>
-            {props.userItems.map((item, index) => (
-                <TouchableOpacity style={styles.item} key={index}>
-                    <Image
-                        style={styles.image}
-                        source={{ uri: item.image }}
-                        key={item.image}
-                    />
-                    <TouchableOpacity style={styles.edit}>
-                        <Text>Edit</Text>
+            <Icon
+                name="md-arrow-back"
+                size={30}
+                style={styles.backButton}
+                color="black"
+                onPress={() => props.nav.pop()}
+            />
+            <View style={styles.allItemsWrapped}>
+                {props.userItems.map((item, index) => (
+                    <TouchableOpacity style={styles.item} key={index}>
+                        <Image
+                            style={styles.image}
+                            source={{ uri: item.image }}
+                            key={item.image}
+                        />
+                        <TouchableOpacity style={styles.edit}>
+                            <Text>Edit</Text>
+                        </TouchableOpacity>
+                        <Text key={item.price} style={styles.price}>
+                            {item.price}
+                        </Text>
+                        <Text key={item.title}>{item.title}</Text>
                     </TouchableOpacity>
-                    <Text key={item.price} style={styles.price}>
-                        {item.price}
-                    </Text>
-                    <Text key={item.title}>{item.title}</Text>
-                </TouchableOpacity>
-            ))}
+                ))}
+            </View>
         </ScrollView>
     );
 };

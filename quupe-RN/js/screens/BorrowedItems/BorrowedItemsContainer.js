@@ -16,9 +16,11 @@ export class BorrowedItemsContainer extends Component {
                     'MM/DD/YYYY',
                     true
                 ).format();
+
                 return itemExpiry < startOfToday;
             }
         );
+
         const borrowing = this.props.navigation.state.params.borrowed.filter(
             item => {
                 const itemExpiry = moment(
@@ -29,7 +31,6 @@ export class BorrowedItemsContainer extends Component {
                 return itemExpiry > startOfToday;
             }
         );
-
         return (
             <BorrowedItems
                 borrowed={borrowedHistory}
