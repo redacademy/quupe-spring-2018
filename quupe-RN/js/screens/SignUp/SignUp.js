@@ -75,15 +75,15 @@ const SignUp = props => (
                                 borderColor={assetColors.darkGrey}
                             />
                             <Text style={styles.termText}>
-                                I agree to Quupe's{' '}
-                                <Text
-                                    style={styles.link}
-                                    onPress={() =>
-                                        Linking.openURL('https://quupe.com/tnc.html')
-                                    }
-                                >
-                                    Terms and Conditions
-                                </Text>
+                                I agree to Quupe's
+                            </Text>
+                            <Text
+                                style={styles.link}
+                                onPress={() =>
+                                    Linking.openURL('https://quupe.com/tnc.html')
+                                }
+                            >
+                                Terms and Conditions
                             </Text>
                         </View>
                     )}

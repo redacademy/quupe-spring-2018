@@ -66,7 +66,8 @@ const styles = StyleSheet.create({
         textDecorationLine: 'underline'
     },
     termText: {
-        paddingLeft: 7
+        paddingLeft: 7,
+        paddingRight: 3
     }
 });
 
