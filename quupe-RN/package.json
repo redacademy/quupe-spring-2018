@@ -39,6 +39,7 @@
     "realm": "^2.8.2",
     "redux": "^4.0.0",
     "redux-thunk": "^2.3.0",
+    "rn-round-checkbox": "^0.3.4",
     "xcode": "^1.0.0"
   },
   "devDependencies": {

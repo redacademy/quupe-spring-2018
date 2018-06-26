@@ -6,6 +6,7 @@ const GET_ERROR = 'GET_ERROR';
 const DELETE_TOKEN = 'DELETE_TOKEN';
 const LOGIN_CANCELLED = 'LOGIN_CANCELLED';
 const LOGIN_ERROR = 'LOGIN_ERROR';
+const ACCEPT_TERMS = 'ACCEPT_TERMS';
 
 export const getToken = () => ({
     type: GET_TOKEN
@@ -32,6 +33,10 @@ export const loginHasErrored = () => ({
     type: LOGIN_ERROR
 });
 
+export const acceptTerms = () => ({
+    type: ACCEPT_TERMS
+});
+
 export const createUserToken = (token, id) => dispatch => {
     try {
         createToken(token, id);
@@ -56,7 +61,8 @@ const initialState = {
     token: queryToken(),
     error: '',
     isError: false,
-    isCancelled: false
+    isCancelled: false,
+    acceptedTerms: false
 };
 
 export default (state = initialState, action) => {
@@ -74,6 +80,9 @@ export default (state = initialState, action) => {
     }
     case LOGIN_ERROR: {
         return { ...state, isError: true };
+    }
+    case ACCEPT_TERMS: {
+        return { ...state, acceptedTerms: !state.acceptedTerms };
     }
     default: {
         return { ...state };

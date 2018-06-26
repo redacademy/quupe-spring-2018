@@ -23,8 +23,20 @@ const styles = StyleSheet.create({
         paddingRight: 40,
         borderRadius: 7,
         overflow: 'hidden',
-        color: 'white',
         marginTop: 5
+    },
+    disabledButton: {
+        backgroundColor: assetColors.mediumGrey,
+        paddingTop: 10,
+        paddingBottom: 10,
+        paddingLeft: 40,
+        paddingRight: 40,
+        borderRadius: 7,
+        marginTop: 5,
+        overflow: 'hidden'
+    },
+    signInText: {
+        color: 'white'
     },
     seperator: {
         fontWeight: 'bold',
@@ -39,6 +51,23 @@ const styles = StyleSheet.create({
         height: 50,
         alignSelf: 'center',
         marginBottom: 25
+    },
+    terms: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        marginTop: 10,
+        marginBottom: 10
+    },
+    checkbox: {
+        borderRadius: 100
+    },
+    link: {
+        color: assetColors.darkBlue,
+        textDecorationLine: 'underline'
+    },
+    termText: {
+        paddingLeft: 7,
+        paddingRight: 3
     }
 });
 

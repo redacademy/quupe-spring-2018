@@ -12,12 +12,18 @@ const SignIn = props => (
                 variables: { ...values }
             });
         }}
-        // validate={validate}
+        validate={values => {
+            const errors = {};
+            if (!values.email || !values.password) {
+                errors.message = 'Missing fields';
+            }
+            return errors;
+        }}
         render={({ handleSubmit, pristine, invalid }) => (
             <View style={styles.login}>
                 <Field
                     name="email"
-                    render={({ input, meta }) => (
+                    render={({ input }) => (
                         <TextInput
                             {...input}
                             style={styles.input}
@@ -28,7 +34,7 @@ const SignIn = props => (
                 />
                 <Field
                     name="password"
-                    render={({ input, meta }) => (
+                    render={({ input }) => (
                         <TextInput
                             {...input}
                             style={styles.input}
@@ -39,11 +45,20 @@ const SignIn = props => (
                     )}
                 />
                 {props.loading && <Text>Loading</Text>}
-                {props.error && <Text>There was an error</Text>}
-                <TouchableOpacity disabled={pristine || invalid}>
-                    <Text style={styles.signInButton} onPress={handleSubmit}>
-                        Sign In
-                    </Text>
+                {props.error.message &&
+                    props.error.message.includes('Invalid credentials') && (
+                    <Text>Invalid email or password</Text>
+                )}
+                {props.error.message &&
+                    props.error.message.includes('An unexpected error occured during authentication.') && <Text>An error occured, please try again</Text>}
+                <TouchableOpacity
+                    onPress={handleSubmit}
+                    disabled={pristine || invalid}
+                    style={
+                        invalid ? styles.disabledButton : styles.signInButton
+                    }
+                >
+                    <Text style={styles.signInText}>Sign In</Text>
                 </TouchableOpacity>
             </View>
         )}
@@ -51,13 +66,13 @@ const SignIn = props => (
 );
 
 SignIn.defaultProps = {
-    error: ''
+    error: {}
 };
 
 SignIn.propTypes = {
     authenticateUser: PropTypes.func.isRequired,
     loading: PropTypes.bool.isRequired,
-    error: PropTypes.string
+    error: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.array, PropTypes.string]))
 };
 
 export default SignIn;

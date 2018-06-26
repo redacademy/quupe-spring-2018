@@ -50,6 +50,8 @@ class SignUpContainer extends Component {
                             data={data}
                             loading={loading}
                             error={error}
+                            acceptedTerms={this.props.acceptedTerms}
+                            dispatch={this.props.dispatch}
                         />
                     )}
                 </Mutation>
@@ -61,7 +63,10 @@ class SignUpContainer extends Component {
 
 SignUpContainer.propTypes = {
     dispatch: PropTypes.func.isRequired,
-    navigation: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.func, PropTypes.object])).isRequired
+    navigation: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.func, PropTypes.object])).isRequired,
+    acceptedTerms: PropTypes.bool.isRequired
 };
 
-export default connect()(SignUpContainer);
+export default connect(state => ({
+    acceptedTerms: state.Token.acceptedTerms
+}))(SignUpContainer);

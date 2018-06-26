@@ -23,8 +23,20 @@ const styles = StyleSheet.create({
         paddingRight: 40,
         borderRadius: 7,
         overflow: 'hidden',
-        color: 'white',
         marginTop: 5
+    },
+    disabledButton: {
+        backgroundColor: assetColors.mediumGrey,
+        paddingTop: 10,
+        paddingBottom: 10,
+        paddingLeft: 40,
+        paddingRight: 40,
+        borderRadius: 7,
+        overflow: 'hidden',
+        marginTop: 5
+    },
+    signInText: {
+        color: 'white'
     },
     forget: {
         fontSize: 12,

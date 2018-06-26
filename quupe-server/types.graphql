@@ -1,11 +1,11 @@
-enum CategoryEnum{
-CAMERA
-CAMPING
-DRONE
-OUTDOOR
-ELECTRONICS
-GARDENING
-SPORTS
+enum CategoryEnum {
+  CAMERA
+  CAMPING
+  DRONE
+  OUTDOOR
+  ELECTRONICS
+  GARDENING
+  SPORTS
 }
 
 type Item @model {
@@ -24,17 +24,16 @@ type Item @model {
   longitude: Float! @migrationValue(value: "0")
   allBorrowers: [BorrowTransactions!]! @relation(name: "TransactionsOnItem")
   owner: User @relation(name: "ItemsOnUser")
-
 }
 
 type User @model {
-  id: ID! @isUnique 
+  id: ID! @isUnique
   items: [Item!]! @relation(name: "ItemsOnUser")
   createdAt: DateTime!
   updatedAt: DateTime!
   email: String! @isUnique
   password: String!
-  fullname: String 
+  fullname: String
   profileimage: String
   bio: String
   allBorrowed: [BorrowTransactions!]! @relation(name: "TransactionsOnUser")
@@ -51,25 +50,25 @@ type BorrowTransactions @model {
 }
 
 type Room @model {
-  id: ID! @isUnique 
+  id: ID! @isUnique
   messages: [Messages!]! @relation(name: "MessagesOnRoom")
   people: [User!]! @relation(name: "UserOnRoom")
 }
 
 type Messages @model {
-     id: ID! @isUnique
-     text: String!
-     roomid: Room! @relation(name: "MessagesOnRoom")
-     sentBy: [User!]! @relation(name: "MessagesOnUser")
+  id: ID! @isUnique
+  text: String!
+  roomid: Room! @relation(name: "MessagesOnRoom")
+  sentBy: [User!]! @relation(name: "MessagesOnUser")
 }
 
 type File @model {
- id: ID! @isUnique
- createdAt: DateTime!
- updatedAt: DateTime!
- contentType: String
- name: String
- secret: String @isUnique
- size: Int
- url: String
+  id: ID! @isUnique
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  contentType: String
+  name: String
+  secret: String @isUnique
+  size: Int
+  url: String
 }
