@@ -1,21 +1,20 @@
 import React, { Component } from 'react';
 import { ScrollView, View } from 'react-native';
 
-import Popular from './Popular';
-import Category from '../Category';
+import CategoryItems from './CategoryItems';
 
 import styles from './styles';
 
-class PopularContainer extends Component {
+class CategoryItemsContainer extends Component {
   render() {
     return (
       <ScrollView>
         <View style={styles.dimension}>
-          <Popular />
+          <CategoryItems />
         </View>
       </ScrollView>
     );
   }
 }
 
-export default PopularContainer;
+export default CategoryItemsContainer;
