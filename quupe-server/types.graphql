@@ -56,10 +56,11 @@ type Room @model {
 }
 
 type Messages @model {
-  id: ID! @isUnique
-  text: String!
-  roomid: Room! @relation(name: "MessagesOnRoom")
-  sentBy: [User!]! @relation(name: "MessagesOnUser")
+     id: ID! @isUnique
+     text: String!
+     roomid: Room! @relation(name: "MessagesOnRoom")
+     sentBy: [User!]! @relation(name: "MessagesOnUser")
+     createdAt: DateTime!
 }
 
 type File @model {
