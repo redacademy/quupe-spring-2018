@@ -1,7 +1,6 @@
 import Moment from 'moment';
 
 export const formatCalendarData = data => {
-    console.log(data);
     const calendarData = {};
     Object.keys(data).map(timeBorrowed => {
         const startDate = Moment(data[timeBorrowed].startDate).format('YYYY-MM-DD');

@@ -3,6 +3,8 @@ const DISPLAY_TO_CALENDAR = 'DISPLAY_TO_CALENDAR';
 const SET_FROM_DATE = 'SET_FROM_DATE';
 const SET_TO_DATE = 'SET_TO_DATE';
 const DISPLAY_MESSAGE_OVERLAY = 'DISPLAY_MESSAGE_OVERLAY';
+const DISPLAY_MODAL = 'DISPLAY_MODAL';
+const DISPLAY_FINISH_OVERLAY = 'DISPLAY_FINISH_OVERLAY';
 
 export const displayFromCalendar = () => ({
     type: DISPLAY_FROM_CALENDAR
@@ -26,12 +28,22 @@ export const displayMessageOverlay = () => ({
     type: DISPLAY_MESSAGE_OVERLAY
 });
 
+export const displayModal = () => ({
+    type: DISPLAY_MODAL
+});
+
+export const displayFinishedOverlay = () => ({
+    type: DISPLAY_FINISH_OVERLAY
+});
+
 const initialState = {
     fromDate: 'From',
     toDate: 'To',
     fromCalendar: false,
     toCalendar: false,
-    messageOverlay: false
+    messageOverlay: false,
+    modalVisible: false,
+    finishOverlay: false
 };
 
 export default (state = initialState, action) => {
@@ -58,6 +70,16 @@ export default (state = initialState, action) => {
     }
     case DISPLAY_MESSAGE_OVERLAY: {
         return { ...state, messageOverlay: !state.messageOverlay };
+    }
+    case DISPLAY_MODAL: {
+        return { ...state, modalVisible: !state.modalVisible };
+    }
+    case DISPLAY_FINISH_OVERLAY: {
+        return {
+            ...state,
+            modalVisible: false,
+            finishOverlay: !state.finishOverlay
+        };
     }
     default: {
         return { ...state };

@@ -55,12 +55,12 @@ const CalendarScreen = props => (
             onPress={() => props.navigation.pop()}
         />
         <Text style={styles.calendarTitle}>{props.title}</Text>
-        {props.fromCalendar && (
-            <Query query={itemBorrowedQuery} variables={{ id: props.itemId }}>
-                {({ loading, error, data }) => {
-                    if (loading) return <ActivityIndicator />;
-                    if (error) return <Text>Error</Text>;
-                    const calendarData = formatCalendarData(data.Item.allBorrowers);
+        <Query query={itemBorrowedQuery} variables={{ id: props.itemId }}>
+            {({ loading, error, data }) => {
+                if (loading) return <ActivityIndicator />;
+                if (error) return <Text>Error</Text>;
+                const calendarData = formatCalendarData(data.Item.allBorrowers);
+                if (props.fromCalendar) {
                     return (
                         <View>
                             <Text>From</Text>
@@ -75,15 +75,7 @@ const CalendarScreen = props => (
                             />
                         </View>
                     );
-                }}
-            </Query>
-        )}
-        {props.toCalendar && (
-            <Query query={itemBorrowedQuery} variables={{ id: props.itemId }}>
-                {({ loading, error, data }) => {
-                    if (loading) return <ActivityIndicator />;
-                    if (error) return <Text>Error</Text>;
-                    const calendarData = formatCalendarData(data.Item.allBorrowers);
+                } else if (props.toCalendar) {
                     return (
                         <View>
                             <Text>To</Text>
@@ -98,9 +90,10 @@ const CalendarScreen = props => (
                             />
                         </View>
                     );
-                }}
-            </Query>
-        )}
+                }
+                return null;
+            }}
+        </Query>
         <TouchableOpacity
             disabled={!props.isCompleted}
             style={

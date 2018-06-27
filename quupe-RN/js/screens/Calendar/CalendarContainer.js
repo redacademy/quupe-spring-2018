@@ -7,7 +7,9 @@ import {
     displayFromCalendar,
     displayToCalendar,
     setFromDate,
-    setToDate
+    setToDate,
+    displayModal,
+    displayFinishedOverlay
 } from '../../redux/modules/BorrowItem';
 import Calendar from './Calender';
 
@@ -39,13 +41,6 @@ const borrowItemMutation = gql`
 `;
 
 class CalendarContainer extends Component {
-    constructor() {
-        super();
-        this.state = {
-            modalVisible: false,
-            finishOverlay: false
-        };
-    }
     setFromDate(date) {
         this.props.dispatch(setFromDate(date));
     }
@@ -63,14 +58,11 @@ class CalendarContainer extends Component {
     }
 
     displayModal() {
-        this.setState({ modalVisible: !this.state.modalVisible });
+        this.props.dispatch(displayModal());
     }
 
     displayFinishedOverlay() {
-        this.setState({
-            modalVisible: false,
-            finishOverlay: !this.state.finishOverlay
-        });
+        this.props.dispatch(displayFinishedOverlay());
     }
 
     render() {
@@ -97,11 +89,13 @@ class CalendarContainer extends Component {
                         setFromDate={this.setFromDate.bind(this)}
                         setToDate={this.setToDate.bind(this)}
                         displayModal={this.displayModal.bind(this)}
-                        modalVisible={this.state.modalVisible}
+                        modalVisible={this.props.calendarData.modalVisible}
                         createBorrowTransaction={createBorrowTransaction}
                         currentUser={currentUserId}
                         displayFinishedOverlay={this.displayFinishedOverlay.bind(this)}
-                        finishOverlayVisible={this.state.finishOverlay}
+                        finishOverlayVisible={
+                            this.props.calendarData.finishOverlay
+                        }
                         isCompleted={isCompleted}
                         loading={loading}
                         error={error}

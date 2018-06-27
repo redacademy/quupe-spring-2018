@@ -115,7 +115,8 @@ const appStack = createBottomTabNavigator(
         Home: homeStack,
         Borrow: borrowStack,
         Lend: lendStack,
-        Account: accountStack
+        Account: accountStack,
+        Item: itemStack
     },
     {
         navigationOptions: ({ navigation }) => ({
