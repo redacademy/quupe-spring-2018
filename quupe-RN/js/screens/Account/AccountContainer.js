@@ -64,7 +64,7 @@ class AccountContainer extends Component {
         if (!currentUser) {
             return <Text>Not Logged in</Text>;
         }
-        console.log(this.props);
+
         return (
             <Query query={AccountQuery} variables={{ id: currentUser }}>
                 {({ loading, error, data }) => {
@@ -87,10 +87,8 @@ class AccountContainer extends Component {
 
 AccountContainer.propTypes = {
     dispatch: PropTypes.func.isRequired,
-    navigation: PropTypes.objectOf(
-        PropTypes.oneOfType([PropTypes.func, PropTypes.object])
-    ).isRequired
-    //TODO TOKEN PROPTYPE FIX
+    navigation: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.func, PropTypes.object])).isRequired
+    // TODO TOKEN PROPTYPE FIX
 };
 
 export default connect(state => ({

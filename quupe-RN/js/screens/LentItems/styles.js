@@ -1,20 +1,53 @@
+import { assetColors } from '../../assets/styles';
+
 const styles = {
-    image: {
-        width: 50,
-        height: 50
+    itemsContainer: {
+        padding: 15
     },
-    backButton: {
-        position: 'absolute',
-        left: 10,
-        margin: 20,
+    header: {
+        flexDirection: 'row',
+        height: 100,
         marginTop: 40
     },
-    itemPanel: {
-        marginTop: 80
+    headerTitle: {
+        fontWeight: 'bold',
+        fontSize: 24,
+        marginTop: 5
+    },
+    backButton: {
+        marginRight: 20,
+        fontSize: 40,
+        marginBottom: 15,
+        paddingRight: 10
+    },
+    image: {
+        height: 80,
+        width: 110,
+        borderRadius: 10
     },
 
-    borrowing: {
-        marginTop: 100
+    itemPanel: {
+        marginTop: 15,
+        borderWidth: 1,
+        borderColor: assetColors.darkBlue,
+        borderRadius: 10,
+        padding: 15,
+        flexDirection: 'row'
+    },
+    itemPanelTitle: {
+        fontWeight: 'bold'
+    },
+    itemPanelText: {
+        flexDirection: 'column',
+        marginLeft: 10
+    },
+    borrowingFrom: {
+        flex: 1,
+        flexWrap: 'wrap'
+    },
+    borrowedHeader: {
+        marginTop: 25
     }
 };
+
 export default styles;

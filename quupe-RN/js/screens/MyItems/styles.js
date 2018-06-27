@@ -7,7 +7,7 @@ const styles = {
     backButton: {
         position: 'absolute',
         left: 10,
-        margin: 20,
+        margin: 50,
         marginTop: 40
     },
     itemsContainer: {
@@ -28,7 +28,7 @@ const styles = {
     edit: {
         position: 'absolute',
         right: 12,
-        top: 5,
+        top: 15,
         borderRadius: 15,
         backgroundColor: assetColors.lightGrey,
         width: 75,

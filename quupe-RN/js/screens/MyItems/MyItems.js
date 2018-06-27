@@ -39,6 +39,6 @@ MyItems.propTypes = {
     nav: PropTypes.objectOf(
         PropTypes.oneOfType([PropTypes.func, PropTypes.object])
     ).isRequired,
-    userItems: PropTypes.array.isRequired
+    userItems: PropTypes.arrayOf(PropTypes.object).isRequired
 };
 export default MyItems;
