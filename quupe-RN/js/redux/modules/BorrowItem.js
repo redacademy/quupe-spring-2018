@@ -39,7 +39,7 @@ export const displayFinishedOverlay = () => ({
 const initialState = {
     fromDate: 'From',
     toDate: 'To',
-    fromCalendar: false,
+    fromCalendar: true,
     toCalendar: false,
     messageOverlay: false,
     modalVisible: false,

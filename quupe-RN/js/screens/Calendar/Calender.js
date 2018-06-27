@@ -60,38 +60,25 @@ const CalendarScreen = props => (
                 if (loading) return <ActivityIndicator />;
                 if (error) return <Text>Error</Text>;
                 const calendarData = formatCalendarData(data.Item.allBorrowers);
-                if (props.fromCalendar) {
-                    return (
-                        <View>
-                            <Text>From</Text>
-                            <Calendar
-                                style={styles.calendar}
-                                onDayPress={day => {
+                return (
+                    <View>
+                        {props.fromCalendar ? <Text>From</Text> : null}
+                        {props.toCalendar ? <Text>To</Text> : null}
+                        <Calendar
+                            style={styles.calendar}
+                            onDayPress={day => {
+                                if (props.fromCalendar) {
                                     props.setFromDate(day.dateString);
-                                }}
-                                minDate={new Date()}
-                                markingType="basic"
-                                markedDates={calendarData}
-                            />
-                        </View>
-                    );
-                } else if (props.toCalendar) {
-                    return (
-                        <View>
-                            <Text>To</Text>
-                            <Calendar
-                                style={styles.calendar}
-                                onDayPress={day => {
+                                } else if (props.toCalendar) {
                                     props.setToDate(day.dateString);
-                                }}
-                                minDate={new Date()}
-                                markingType="basic"
-                                markedDates={calendarData}
-                            />
-                        </View>
-                    );
-                }
-                return null;
+                                }
+                            }}
+                            minDate={new Date()}
+                            markingType="basic"
+                            markedDates={calendarData}
+                        />
+                    </View>
+                );
             }}
         </Query>
         <TouchableOpacity
