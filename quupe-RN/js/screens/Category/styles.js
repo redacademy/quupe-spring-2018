@@ -1,4 +1,5 @@
 import { StyleSheet } from 'react-native';
+import { assetTypography } from '../../assets/styles';
 
 const styles = StyleSheet.create({
   dimension: {
@@ -27,7 +28,8 @@ const styles = StyleSheet.create({
   categoryText: {
     color: '#FFFFFF',
     fontSize: 24,
-    display: 'flex'
+    display: 'flex',
+    fontFamily: assetTypography.subHeader
   }
 });
 
