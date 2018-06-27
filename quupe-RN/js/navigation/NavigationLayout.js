@@ -7,6 +7,7 @@ import {
 } from 'react-navigation';
 
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import { Image } from 'react-native';
 
 import HomeContainer from '../screens/Home';
 import BorrowContainer from '../screens/Borrow';
@@ -25,15 +26,41 @@ import AuthLoadingContainer from '../screens/AuthLoading';
 import SingleItemContainer from '../screens/SingleItem';
 import CalendarContainer from '../screens/Calendar';
 import BorrowFormContainer from '../screens/BorrowForm';
+import CategoryItemContainer from '../screens/CategoryItems';
+
+const itemStack = createStackNavigator(
+    {
+        Item: SingleItemContainer,
+        Calendar: CalendarContainer
+    },
+    {
+        headerMode: 'none'
+    }
+);
 
 const homeStack = createStackNavigator(
     {
-        Home: HomeContainer
+        Home: HomeContainer,
+        Category: CategoryItemContainer,
+        Item: SingleItemContainer,
+        Calendar: CalendarContainer
     },
     {
         navigationOptions: ({ navigation }) => ({
-            title: 'Home',
-            headerTitleStyle: { color: assetColors.white }
+            headerTitle: (
+                <Image
+                    source={require('../assets/images/qp_blue_org.png')}
+                    style={{ width: 100, height: 50 }}
+                />
+            ),
+            headerTitleStyle: {
+                color: assetColors.white
+            },
+            headerStyle: {
+                backgroundColor: assetColors.white,
+                height: 50
+            },
+            headerMode: 'screen'
         })
     }
 );
@@ -83,16 +110,6 @@ const accountStack = createStackNavigator(
     }
 );
 
-const itemStack = createStackNavigator(
-    {
-        Item: SingleItemContainer,
-        Calendar: CalendarContainer
-    },
-    {
-        headerMode: 'none'
-    }
-);
-
 const authSwitch = createStackNavigator(
     {
         Welcome: WelcomeContainer,
@@ -119,8 +136,7 @@ const appStack = createBottomTabNavigator(
         Home: homeStack,
         Borrow: borrowStack,
         Lend: lendStack,
-        Account: accountStack,
-        Item: itemStack
+        Account: accountStack
     },
     {
         navigationOptions: ({ navigation }) => ({

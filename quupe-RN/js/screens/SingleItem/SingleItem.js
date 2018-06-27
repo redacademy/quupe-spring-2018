@@ -5,7 +5,8 @@ import {
     Image,
     TouchableOpacity,
     TextInput,
-    ActivityIndicator
+    ActivityIndicator,
+    ScrollView
 } from 'react-native';
 import PropTypes from 'prop-types';
 import Overlay from 'react-native-modal-overlay';
@@ -16,7 +17,14 @@ import Map from '../../components/Map';
 import { displayMessageOverlay } from '../../redux/modules/BorrowItem';
 
 const SingleItem = props => (
-    <View>
+    <ScrollView>
+        <Icon
+            name="ios-arrow-round-back"
+            size={35}
+            style={styles.backButton}
+            color="white"
+            onPress={() => props.navigation.pop()}
+        />
         <Image source={{ uri: props.item.image }} style={styles.itemImage} />
         <Text style={styles.itemTitle}>{props.item.title}</Text>
         <View style={styles.pricing}>
@@ -192,7 +200,7 @@ const SingleItem = props => (
         >
             <Text style={styles.bookText}>Book this item</Text>
         </TouchableOpacity>
-    </View>
+    </ScrollView>
 );
 
 SingleItem.defaultProps = {
@@ -203,7 +211,8 @@ SingleItem.propTypes = {
     item: PropTypes.objectOf(PropTypes.oneOfType([
         PropTypes.string,
         PropTypes.object,
-        PropTypes.number
+        PropTypes.number,
+        PropTypes.array
     ])).isRequired,
     currentTab: PropTypes.string.isRequired,
     changeTab: PropTypes.func.isRequired,

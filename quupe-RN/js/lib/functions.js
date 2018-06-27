@@ -50,3 +50,19 @@ export const formatCalendarData = data => {
     });
     return calendarData;
 };
+
+// Function to receive all items and sort them into format for sectionList, then sort that data by the amount of borrowers (to find popularity), then only display the top 4.
+export const formatPopularData = data => {
+    const sortedCategoryList = data.reduce((acc, curr) => {
+        const categoryExists = acc.find(item => item.title === curr.category.toLowerCase());
+        categoryExists
+            ? categoryExists.data.push(curr)
+            : acc.push({ title: curr.category.toLowerCase(), data: [curr] });
+        return acc;
+    }, []);
+    sortedCategoryList.forEach(category =>
+        category.data.sort((a, b) => b.allBorrowers.length - a.allBorrowers.length));
+    sortedCategoryList.forEach(category =>
+        category.data.splice(4, category.data.length));
+    return sortedCategoryList;
+};
