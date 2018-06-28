@@ -39,6 +39,8 @@ const sendMessageMutation = gql`
 `;
 
 class SingleItemContainer extends Component {
+    static navigationOptions = { header: null };
+
     constructor() {
         super();
         this.state = {

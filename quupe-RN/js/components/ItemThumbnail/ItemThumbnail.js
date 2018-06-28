@@ -35,7 +35,8 @@ const ItemThumbnail = ({
                 itemData.longitude,
                 latitude,
                 longitude
-            )} km
+            )}
+            km
         </Text>
     </View>
 );

@@ -167,6 +167,16 @@ const styles = StyleSheet.create({
         marginTop: 10,
         width: '60%',
         alignSelf: 'flex-end'
+    },
+    backButton: {
+        position: 'absolute',
+        left: 10,
+        top: 20,
+        shadowRadius: 3,
+        shadowColor: assetColors.darkGrey,
+        shadowOffset: { width: 0, height: 0 },
+        shadowOpacity: 1,
+        zIndex: 10
     }
 });
 

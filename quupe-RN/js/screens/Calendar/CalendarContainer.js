@@ -41,6 +41,7 @@ const borrowItemMutation = gql`
 `;
 
 class CalendarContainer extends Component {
+    static navigationOptions = { header: null };
     setFromDate(date) {
         this.props.dispatch(setFromDate(date));
     }
