@@ -35,7 +35,7 @@ const ItemThumbnail = ({
                 itemData.longitude,
                 latitude,
                 longitude
-            )}{' '}
+            )}
             km
         </Text>
     </View>
