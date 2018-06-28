@@ -102,6 +102,43 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         marginTop: 20
+    },
+    envText: {
+        color: assetColors.darkBlue,
+        textAlign: 'center',
+        fontSize: 17
+    },
+    borrowButton: {
+        backgroundColor: assetColors.darkBlue,
+        borderRadius: 7,
+        width: '50%',
+        height: 40,
+        justifyContent: 'center',
+        alignItems: 'center',
+        marginRight: 5
+    },
+    homeButton: {
+        borderColor: assetColors.darkBlue,
+        backgroundColor: 'white',
+        borderWidth: 2,
+        borderRadius: 7,
+        width: '50%',
+        height: 40,
+        justifyContent: 'center',
+        alignItems: 'center'
+    },
+    homeText: {
+        color: assetColors.darkBlue,
+        fontSize: 20
+    },
+    buttons: {
+        flexDirection: 'row',
+        marginTop: 20
+    },
+    text: {
+        textAlign: 'center',
+        fontSize: 17,
+        marginTop: 20
     }
 });
 
