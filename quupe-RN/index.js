@@ -6,7 +6,8 @@ YellowBox.ignoreWarnings([
     'Module RCTImageLoader',
     'Class RCTCxxModule was not exported.',
     'Possible Unhandled Promise Rejection',
-    'Deprecation warning: value provided is not in a recognized RFC2822 or ISO format.'
+    'Deprecation warning: value provided is not in a recognized RFC2822 or ISO format.',
+    'Warning: Encountered two children with the same key'
 ]);
 
 AppRegistry.registerComponent('quupe', () => App);

@@ -43,7 +43,7 @@ const BorrowedItems = props => {
                         <Text style={styles.borrowingFrom}>
                             Borrowing from: {'\n'}
                             {moment(item.startDate).format('MMMM Do')} to{' '}
-                            {moment(item.endDate).format('MMMM do')}
+                            {moment(item.endDate).format('MMMM Do')}
                         </Text>
                     </View>
                 </TouchableOpacity>
@@ -73,7 +73,7 @@ const BorrowedItems = props => {
                         <Text style={styles.borrowingFrom}>
                             Borrowed from: {'\n'}
                             {moment(item.startDate).format('MMMM Do')} to{' '}
-                            {moment(item.endDate).format('MMMM do')}
+                            {moment(item.endDate).format('MMMM Do')}
                         </Text>
                     </View>
                 </TouchableOpacity>
