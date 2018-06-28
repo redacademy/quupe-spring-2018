@@ -91,15 +91,6 @@ const lendStack = createStackNavigator(
         })
     }
 );
-const itemStack = createStackNavigator(
-    {
-        Item: SingleItemContainer,
-        Calendar: CalendarContainer
-    },
-    {
-        headerMode: 'none'
-    }
-);
 
 const accountStack = createStackNavigator(
     {

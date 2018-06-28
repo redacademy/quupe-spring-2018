@@ -13,7 +13,6 @@ import {
 import styles from './styles';
 
 const TransactionHistory = props => {
-
     return (
         <ScrollView contentContainerStyle={styles.itemsContainer}>
             <View style={styles.header}>

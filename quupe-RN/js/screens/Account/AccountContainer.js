@@ -70,15 +70,7 @@ const AccountQuery = gql`
                 id
             }
         }
-      }
-      rooms {
-        id
-      }
-      messages {
-        id
-      }
-    
-  
+    }
 `;
 
 class AccountContainer extends Component {
@@ -88,6 +80,7 @@ class AccountContainer extends Component {
     }
 
     render() {
+        console.log(this.props);
         const currentUser =
             Array.from(this.props.token.token)[0] &&
             Array.from(this.props.token.token)[0].id;
@@ -121,8 +114,13 @@ class AccountContainer extends Component {
 
 AccountContainer.propTypes = {
     dispatch: PropTypes.func.isRequired,
-    navigation: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.func, PropTypes.object])).isRequired
-    // TODO TOKEN PROPTYPE FIX
+    navigation: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.func, PropTypes.object])).isRequired,
+    token: PropTypes.objectOf(PropTypes.oneOfType([
+        PropTypes.object,
+        PropTypes.string,
+        PropTypes.func,
+        PropTypes.bool
+    ])).isRequired
 };
 
 export default connect(state => ({

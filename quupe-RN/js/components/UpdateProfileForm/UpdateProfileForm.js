@@ -9,6 +9,7 @@ import {
     TouchableOpacity,
     ScrollView
 } from 'react-native';
+import PropTypes from 'prop-types';
 import {
     setFullname,
     setBio,
@@ -17,15 +18,14 @@ import {
 } from '../../redux/modules/updateProfile';
 import { Form } from 'react-final-form';
 import ImagePicker from 'react-native-image-picker';
-import { Dropdown } from 'react-native-material-dropdown';
 import { connect } from 'react-redux';
 
 const options = {
-     storageOptions: {
-         skipBackup: true,
-         path: 'images'
-     }
- };
+    storageOptions: {
+        skipBackup: true,
+        path: 'images'
+    }
+};
 const updateUser = gql`
     mutation(
         $fullname: String!
@@ -56,6 +56,7 @@ class BioForm extends Component {
         this.props.dispatch(setEmail(email));
     };
     render() {
+        console.log(this.props);
         return (
             <ScrollView>
                 <Mutation mutation={updateUser}>
@@ -68,7 +69,7 @@ class BioForm extends Component {
                                     bio: this.props.bio,
                                     email: this.props.email
                                 };
-                                console.log(newProfile);
+
                                 updateUser({ variables: newProfile });
                             }}
                             render={({
@@ -179,6 +180,10 @@ class BioForm extends Component {
         );
     }
 }
+BioForm.propTypes = {
+    dispatch: PropTypes.func.isRequired
+};
+
 export default graphql(updateUser, { name: 'updateUser' })(connect(state => ({
     title: state.updateProfile.fullname,
     bio: state.updateProfile.bio,

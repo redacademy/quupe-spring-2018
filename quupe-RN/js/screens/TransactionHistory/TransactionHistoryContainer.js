@@ -62,7 +62,7 @@ class TransactionHistoryContainer extends Component {
                     if (error) return <Text>Error</Text>;
 
                     const borrowedItemsData = data.User.allBorrowed;
-       
+
                     const lentItemsData = data.User.items.filter(item => item.allBorrowers[0]);
 
                     const totalMoneyEarned = [];
@@ -92,7 +92,13 @@ class TransactionHistoryContainer extends Component {
     }
 }
 TransactionHistoryContainer.propTypes = {
-    navigation: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.func, PropTypes.object])).isRequired
+    navigation: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.func, PropTypes.object])).isRequired,
+    token: PropTypes.objectOf(PropTypes.oneOfType([
+        PropTypes.object,
+        PropTypes.string,
+        PropTypes.func,
+        PropTypes.bool
+    ])).isRequired
 };
 
 export default connect(state => ({
