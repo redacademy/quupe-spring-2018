@@ -10,7 +10,21 @@ const SET_PRICE_ONE_WEEK = 'SET_PRICE_ONE_WEEK';
 const SET_PRICE_ONE_MONTH = 'SET_PRICE_ONE_MONTH';
 const SET_LATITUDE = 'SET_LATITUDE';
 const SET_LONGITUDE = 'SET_LONGITUDE';
+const SET_LOCATION = 'SET_LOCATION';
+const SET_FOCUS = 'SET_FOCUS';
+const SET_BLUR = 'SET_BLUR';
+const RESET_FORM = 'RESET_FORM';
 const SET_ERROR = 'SET_ERROR';
+
+export const setFocus = () => ({
+    type: SET_FOCUS,
+    payload: true
+});
+
+export const setBlur = () => ({
+    type: SET_BLUR,
+    payload: false
+});
 
 export const setTitle = title => ({
     type: SET_TITLE,
@@ -71,6 +85,16 @@ export const setLongitude = longitude => ({
     payload: longitude
 });
 
+export const setLocation = location => ({
+    type: SET_LOCATION,
+    payload: location
+});
+
+export const resetForm = () => ({
+    type: RESET_FORM,
+    payload: ''
+});
+
 export const setError = error => ({
     type: SET_ERROR,
     payload: error
@@ -88,11 +112,23 @@ const initialState = {
     priceOneMonth: '',
     description: '',
     latitude: '',
-    longitude: ''
+    longitude: '',
+    location: '',
+    focus: false
 };
 
 export default (state = initialState, action) => {
     switch (action.type) {
+    case SET_BLUR:
+        return {
+            ...state,
+            focus: action.payload
+        };
+    case SET_FOCUS:
+        return {
+            ...state,
+            focus: action.payload
+        };
     case SET_TITLE:
         return {
             ...state,
@@ -152,6 +188,28 @@ export default (state = initialState, action) => {
         return {
             ...state,
             longitude: action.payload
+        };
+    case SET_LOCATION:
+        return {
+            ...state,
+            location: action.payload
+        };
+    case RESET_FORM:
+        return {
+            ...state,
+            title: action.payload,
+            originalPrice: action.payload,
+            image: action.payload,
+            condition: action.payload,
+            year: action.payload,
+            category: action.payload,
+            price: action.payload,
+            priceOneWeek: action.payload,
+            priceOneMonth: action.payload,
+            description: action.payload,
+            latitude: action.payload,
+            longitude: action.payload,
+            location: action.payload
         };
     case SET_ERROR: {
         return { ...state, error: action.payload };
