@@ -8,7 +8,7 @@ import gql from 'graphql-tag';
 import Account from './Account';
 import { deleteUserToken } from '../../redux/modules/Token';
 
-const AccountQuery = gql`
+export const AccountQuery = gql`
     query User($id: ID!) {
         User(id: $id) {
             id
@@ -39,10 +39,18 @@ const AccountQuery = gql`
                 }
             }
             rooms {
+                messages {
+                    text
+                    sentBy {
+                        fullname
+                        profileimage
+                    }
+                }
                 id
-            }
-            messages {
-                id
+                people {
+                    fullname
+                    profileimage
+                }
             }
         }
     }
@@ -53,7 +61,6 @@ class AccountContainer extends Component {
         this.props.dispatch(deleteUserToken(token));
         this.props.navigation.navigate('AuthLoading');
     }
-
     render() {
         const currentUser =
             Array.from(this.props.token.token)[0] &&
@@ -77,6 +84,8 @@ class AccountContainer extends Component {
                             nav={this.props.navigation}
                             currentToken={currentToken}
                             logOut={this.logOut.bind(this)}
+                            currentUser={currentUser}
+                            refetch={refetch}
                         />
                     );
                 }}
@@ -88,7 +97,10 @@ class AccountContainer extends Component {
 AccountContainer.propTypes = {
     dispatch: PropTypes.func.isRequired,
     navigation: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.func, PropTypes.object])).isRequired
+<<<<<<< HEAD
     // TODO TOKEN PROPTYPE FIX
+=======
+>>>>>>> added chat to profile page
 };
 
 export default connect(state => ({

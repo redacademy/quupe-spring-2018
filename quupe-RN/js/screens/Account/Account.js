@@ -4,7 +4,14 @@ import { View, Text, Image, TouchableOpacity, ScrollView } from 'react-native';
 import styles from './styles';
 
 const Account = props => {
-    const { fullname, bio, profileimage, items, allBorrowed } = props.userData;
+    const {
+        fullname,
+        bio,
+        profileimage,
+        items,
+        allBorrowed,
+        rooms
+    } = props.userData;
     return (
         <ScrollView style={styles.accountWrapper}>
             <View style={styles.cardContainer}>
@@ -40,8 +47,9 @@ const Account = props => {
                     <TouchableOpacity
                         style={styles.box}
                         onPress={() =>
-                            props.nav.navigate('Messages', {
-                                userItems: items
+                            props.nav.navigate('MessagesRoomContainer', {
+                                rooms,
+                                currentUser: props.currentUser
                             })
                         }
                     >
@@ -116,12 +124,8 @@ const Account = props => {
 };
 
 Account.propTypes = {
-    nav: PropTypes.objectOf(
-        PropTypes.oneOfType([PropTypes.func, PropTypes.object])
-    ).isRequired,
-    userData: PropTypes.objectOf(
-        PropTypes.oneOfType([PropTypes.string, PropTypes.array])
-    ).isRequired,
+    nav: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.func, PropTypes.object])).isRequired,
+    userData: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string, PropTypes.array])).isRequired,
     logOut: PropTypes.func.isRequired,
     currentToken: PropTypes.string.isRequired
 };

@@ -12,5 +12,5 @@ export default combineReducers({
     Location: LocationReducer,
     SubmitItem: SubmitLendItemReducer,
     BorrowItem: BorrowItemReducer,
-    TransactionHistory: TransactionHistoryToggleReducer
+    TransactionHistory: TransactionHistoryToggleReducer,
 });
