@@ -136,27 +136,33 @@ const CalendarScreen = props => (
             containerStyle={styles.overlay}
             animationDuration={500}
         >
-            <Text>You are one step closer in saving the environment!</Text>
-            <Text>
+            <Text style={styles.envText}>
+                You are one step closer in saving the environment!
+            </Text>
+            <Text style={styles.text}>
                 Thank you for borrowing, your request has been sent to the
                 lender.
             </Text>
-            <TouchableOpacity
-                onPress={() => {
-                    props.displayFinishedOverlay();
-                    props.navigation.navigate('Borrow');
-                }}
-            >
-                <Text>Borrow More</Text>
-            </TouchableOpacity>
-            <TouchableOpacity
-                onPress={() => {
-                    props.displayFinishedOverlay();
-                    props.navigation.navigate('Home');
-                }}
-            >
-                <Text>Go Back Home</Text>
-            </TouchableOpacity>
+            <View style={styles.buttons}>
+                <TouchableOpacity
+                    onPress={() => {
+                        props.displayFinishedOverlay();
+                        props.navigation.navigate('Borrow');
+                    }}
+                    style={styles.borrowButton}
+                >
+                    <Text style={styles.bookItemText}>Borrow More</Text>
+                </TouchableOpacity>
+                <TouchableOpacity
+                    onPress={() => {
+                        props.displayFinishedOverlay();
+                        props.navigation.navigate('Home');
+                    }}
+                    style={styles.homeButton}
+                >
+                    <Text style={styles.homeText}>Go Back Home</Text>
+                </TouchableOpacity>
+            </View>
         </Overlay>
     </View>
 );
