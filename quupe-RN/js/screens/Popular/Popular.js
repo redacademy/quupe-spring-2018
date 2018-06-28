@@ -18,7 +18,7 @@ const Popular = props => (
                             itemData: section.data[i]
                         })
                     }
-                    style={{ width: '45%', margin: 5 }}
+                    style={styles.itemImageButton}
                     key={section.data[i].id}
                 >
                     <Image
@@ -34,7 +34,6 @@ const Popular = props => (
         )}
         sections={props.popularData}
         keyExtractor={(item, index) => item + index}
-        // contentContainerStyle={styles.sectionList}
         renderSectionFooter={({ section: { title } }) => (
             <TouchableOpacity
                 onPress={() =>

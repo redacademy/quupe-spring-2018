@@ -34,6 +34,10 @@ const styles = StyleSheet.create({
     showMoreText: {
         color: 'white',
         fontSize: 15
+    },
+    itemImageButton: {
+        width: '45%',
+        margin: 5
     }
 });
 

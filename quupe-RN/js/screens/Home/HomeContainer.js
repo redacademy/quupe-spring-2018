@@ -8,7 +8,6 @@ import Popular from '../Popular';
 import Category from '../Category';
 
 class HomeContainer extends Component {
-    // static navigationOptions = { header: null };
     render() {
         return (
             <ScrollableTabView
