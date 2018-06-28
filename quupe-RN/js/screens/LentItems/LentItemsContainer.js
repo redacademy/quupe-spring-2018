@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text } from 'react-native';
+import { Text, ActivityIndicator } from 'react-native';
 import moment from 'moment';
 import PropTypes from 'prop-types';
 import { Query } from 'react-apollo';
@@ -10,13 +10,22 @@ import LentItems from './LentItems';
 const allItemsQuery = gql`
     query {
         allItems {
+            id
             title
-            image
             price
             priceOneWeek
             priceOneMonth
+            category
+            condition
+            description
+            image
+            year
+            longitude
+            latitude
             owner {
                 id
+                fullname
+                profileimage
             }
             allBorrowers {
                 id
@@ -38,36 +47,27 @@ class LentItemsContainer extends Component {
         return (
             <Query query={allItemsQuery}>
                 {({ loading, error, data }) => {
-                    if (loading) return <Text>Loading</Text>;
+                    if (loading) return <ActivityIndicator />;
                     if (error) return <Text>Error</Text>;
                     const itemsData = data.allItems;
-                    const userLentItems = itemsData.filter(item => {
-                        return (
-                            item.owner &&
+                    const userLentItems = itemsData.filter(item =>
+                        item.owner &&
                             item.owner.id === currentUser &&
-                            item.allBorrowers[0]
-                        );
-                    });
+                            item.allBorrowers[0]);
 
-                    const userActiveLentItems = userLentItems.filter(item => {
-                        return (
-                            moment(
-                                item.allBorrowers[0].endDate,
-                                'MM/DD/YYYY',
-                                true
-                            ).format() > startOfToday
-                        );
-                    });
+                    const userActiveLentItems = userLentItems.filter(item =>
+                        moment(
+                            item.allBorrowers[0].endDate,
+                            'MM/DD/YYYY',
+                            true
+                        ).format() > startOfToday);
 
-                    const userExpiredLentItems = userLentItems.filter(item => {
-                        return (
-                            moment(
-                                item.allBorrowers[0].endDate,
-                                'MM/DD/YYYY',
-                                true
-                            ).format() <= startOfToday
-                        );
-                    });
+                    const userExpiredLentItems = userLentItems.filter(item =>
+                        moment(
+                            item.allBorrowers[0].endDate,
+                            'MM/DD/YYYY',
+                            true
+                        ).format() <= startOfToday);
 
                     return (
                         <LentItems
@@ -82,9 +82,7 @@ class LentItemsContainer extends Component {
     }
 }
 LentItemsContainer.propTypes = {
-    navigation: PropTypes.objectOf(
-        PropTypes.oneOfType([PropTypes.func, PropTypes.object])
-    ).isRequired
+    navigation: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.func, PropTypes.object])).isRequired
 };
 
 export default LentItemsContainer;

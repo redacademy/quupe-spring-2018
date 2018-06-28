@@ -1,14 +1,25 @@
 import { assetColors } from '../../assets/styles';
 
 const styles = {
-    pageContent: {
-        marginTop: 80
+    itemsContainer: {
+        padding: 15
+    },
+
+    headerTitle: {
+        fontWeight: 'bold',
+        fontSize: 24,
+        marginTop: 5
+    },
+    header: {
+        flexDirection: 'row',
+        height: 100,
+        marginTop: 40
     },
     backButton: {
-        position: 'absolute',
-        left: 10,
-        margin: 20,
-        marginTop: 40
+        marginRight: 20,
+        fontSize: 40,
+        marginBottom: 15,
+        paddingRight: 10
     },
     money: {
         flexDirection: 'row'
@@ -20,34 +31,79 @@ const styles = {
     },
     borrowed: {
         backgroundColor: assetColors.darkBlue,
-        width: '45%',
-        height: 45,
-        borderRadius: 10,
+        width: '50%',
+        height: 35,
+        borderTopLeftRadius: 8,
+        borderBottomLeftRadius: 8,
         alignItems: 'center',
         justifyContent: 'center'
     },
-    grey: {
-        backgroundColor: assetColors.lightGrey,
-        width: '45%',
-        height: 45,
-        borderRadius: 10,
+    lent: {
+        backgroundColor: assetColors.darkBlue,
+        width: '50%',
+        height: 35,
+        borderTopRightRadius: 8,
+        borderBottomRightRadius: 8,
         alignItems: 'center',
         justifyContent: 'center'
+    },
+    greyLent: {
+        backgroundColor: assetColors.lightGrey,
+        width: '50%',
+        height: 35,
+        borderTopRightRadius: 8,
+        borderBottomRightRadius: 8,
+        alignItems: 'center',
+        justifyContent: 'center'
+    },
+    greyBorrowed: {
+        backgroundColor: assetColors.lightGrey,
+        width: '50%',
+        height: 35,
+        borderTopLeftRadius: 8,
+        borderBorromLeftRadius: 8,
+        alignItems: 'center',
+        justifyContent: 'center'
+    },
+    buttonText: {
+        fontWeight: 'bold',
+        color: '#fff',
+        fontSize: 16
     },
     borrowLendButtons: {
-        flexDirection: 'row'
+        flexDirection: 'row',
+        alignSelf: 'center'
     },
     borrowLentImages: {
         width: 120,
         height: 85,
         borderRadius: 10
     },
-    itemTile: {
+    lentItemsTitle: {
+        fontWeight: 'bold',
+        fontSize: 18,
+
+        marginTop: 18,
+        marginBottom: 15
+    },
+    hidden: {
+        display: 'none'
+    },
+
+    itemPanel: {
+        marginTop: 15,
         borderWidth: 1,
         borderColor: assetColors.darkBlue,
         borderRadius: 10,
         padding: 15,
-        margin: 10
+        flexDirection: 'row'
+    },
+    itemPanelTitle: {
+        fontWeight: 'bold'
+    },
+    itemPanelText: {
+        flexDirection: 'column',
+        marginLeft: 10
     }
 };
 
