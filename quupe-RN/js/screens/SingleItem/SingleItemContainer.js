@@ -5,11 +5,11 @@ import gql from 'graphql-tag';
 import { Mutation } from 'react-apollo';
 import SingleItem from './SingleItem';
 
-const mockItemData = {
-    title: 'Ski - Woman 160cm',
-    price: '12',
-    priceOneWeek: '50',
-    priceOneMonth: '180',
+const defaultData = {
+    title: 'Item Name here!',
+    price: '0',
+    priceOneWeek: '0',
+    priceOneMonth: '0',
     id: 'cjifgp62s3qhb0174jbmp0oa2',
     owner: {
         fullname: 'Andrew',
@@ -22,7 +22,7 @@ const mockItemData = {
     category: 'Outdoor',
     year: '2017',
     condition: 'New',
-    description: 'These are some cool skis',
+    description: 'There should be an item here..',
     latitude: 40.593374,
     longitude: -111.8905171
 };
@@ -56,12 +56,15 @@ class SingleItemContainer extends Component {
     }
 
     render() {
-        // TODO: instead of using mock data, take item data from this.props.navigation.state.params
+        const singleItemData = !this.props.navigation.state.params
+            ? defaultData
+            : this.props.navigation.state.params.itemData;
+
         return (
             <Mutation mutation={sendMessageMutation}>
                 {(createRoom, { loading, error }) => (
                     <SingleItem
-                        item={mockItemData}
+                        item={singleItemData}
                         changeTab={this.changeTab.bind(this)}
                         currentTab={this.state.currentTab}
                         navigation={this.props.navigation}

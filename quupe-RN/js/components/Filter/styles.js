@@ -6,35 +6,48 @@ const styles = StyleSheet.create({
         padding: 15,
         alignItems: 'center',
         justifyContent: 'center',
-        marginBottom: 30,
+        marginBottom: 35,
         zIndex: 10
     },
     title: {
         fontSize: 18,
-        fontWeight: 'bold'
+        fontWeight: 'bold',
+        marginBottom: 10
     },
-    searchContainer: {
-        backgroundColor: assetColors.white,
-        borderBottomWidth: 0,
-        borderTopWidth: 0,
-        width: '100%'
-    },
-    searchText: {
-        fontSize: 14,
-        backgroundColor: assetColors.white,
-        borderWidth: 1,
-        borderColor: assetColors.mediumGrey
-    },
+
     textInputContainer: {
         backgroundColor: assetColors.white,
         justifyContent: 'center',
         alignItems: 'center',
         borderWidth: 1,
-        borderRadius: 2,
+        borderRadius: 10,
         borderColor: assetColors.mediumGrey,
-        width: '95%',
-        height: 30,
-        paddingLeft: 10
+        width: '97%',
+        height: 42,
+        paddingLeft: 10,
+        marginBottom: 5,
+        marginTop: 5
+    },
+    itemTextInputWrapper: {
+        flexDirection: 'row',
+        backgroundColor: assetColors.white,
+        alignItems: 'center',
+        borderWidth: 1,
+        borderRadius: 10,
+        borderColor: assetColors.mediumGrey,
+        width: '97%',
+        height: 42,
+        paddingLeft: 10,
+        marginBottom: 5,
+        marginTop: 5,
+        zIndex: 10
+    },
+    itemTextInput: {
+        width: '94%',
+        borderWidth: 0
+    },
+    ionicon: {
+        paddingRight: 10
     },
     textInput: {
         paddingLeft: 0,
@@ -53,6 +66,17 @@ const styles = StyleSheet.create({
         marginTop: 35,
         backgroundColor: assetColors.white,
         width: '95%'
+    },
+    inputContainerStyle: {
+        borderWidth: 0,
+        padding: 0,
+        width: '96%',
+        margin: 0
+    },
+    filteredItems: {
+        borderWidth: 0.5,
+        padding: 5,
+        borderColor: assetColors.mediumGrey
     }
 });
 export default styles;
