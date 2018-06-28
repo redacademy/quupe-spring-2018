@@ -6,6 +6,7 @@ import LocationReducer from './modules/Location';
 import BorrowItemReducer from './modules/BorrowItem';
 import TransactionHistoryToggleReducer from './modules/TransactionHistoryToggle';
 import ItemFilterReducer from './modules/ItemFilter';
+import updateProfileReducer from './modules/updateProfile';
 
 export default combineReducers({
     Faves: FavesReducer,
@@ -14,5 +15,6 @@ export default combineReducers({
     SubmitItem: SubmitLendItemReducer,
     BorrowItem: BorrowItemReducer,
     TransactionHistory: TransactionHistoryToggleReducer,
-    ItemFilter: ItemFilterReducer
+    ItemFilter: ItemFilterReducer,
+    updateProfile: updateProfileReducer
 });

@@ -6,91 +6,137 @@ import moment from 'moment';
 
 import styles from './styles';
 
-const LentItems = props => {
-    return (
-        <ScrollView contentContainerStyle={styles.itemsContainer}>
-            <View style={styles.header}>
-                <Icon
-                    name="md-arrow-back"
-                    size={30}
-                    style={styles.backButton}
-                    color="black"
-                    onPress={() => props.nav.pop()}
-                />
-                <Text style={styles.headerTitle}>Lent Items</Text>
-            </View>
-            <Text style={styles.borrowingWrapper}>Currently lending</Text>
-            {props.activeLentItems ? (
-                props.activeLentItems.map((item, index) => (
-                    <TouchableOpacity key={item.id} style={styles.itemPanel}>
-                        <Image
-                            key={item.image}
-                            style={styles.image}
-                            source={{ uri: item.image }}
-                        />
-                        <View style={styles.itemPanelText}>
-                            <Text key={index} style={styles.itemPanelTitle}>
-                                {item.title}
-                            </Text>
-                            <Text key={item.price}>
-                                Total fee: $
-                                {item.price *
-                                    moment(item.endDate)
-                                        .subtract(item.startDate)
-                                        .format('d')}
-                            </Text>
-                            <Text style={styles.borrowingFrom}>
-                                Borrowing from: {'\n'}
-                                {moment(item.startDate).format(
-                                    'MMMM Do'
-                                )} to {moment(item.endDate).format('MMMM do')}
-                            </Text>
-                        </View>
-                    </TouchableOpacity>
-                ))
-            ) : (
-                <Text>No items currently lending</Text>
-            )}
-            <Text style={styles.borrowedHeader}>Lent</Text>
-            {props.expiredLentItems ? (
-                props.expiredLentItems.map((item, index) => (
-                    <TouchableOpacity key={item.id} style={styles.itemPanel}>
-                        <Image
-                            key={item.image}
-                            style={styles.image}
-                            source={{ uri: item.image }}
-                        />
-                        <View style={styles.itemPanelText}>
-                            <Text key={index} style={styles.itemPanelTitle}>
-                                {item.title}
-                            </Text>
-                            <Text key={item.price}>
-                                Total fee: $
-                                {item.price *
-                                    moment(item.endDate)
-                                        .subtract(item.startDate)
-                                        .format('d')}
-                            </Text>
-                            <Text style={styles.borrowingFrom}>
-                                Borrowed from: {'\n'}
-                                {moment(item.startDate).format(
-                                    'MMMM Do'
-                                )} to {moment(item.endDate).format('MMMM do')}
-                            </Text>
-                        </View>
-                    </TouchableOpacity>
-                ))
-            ) : (
-                <Text>No lending history</Text>
-            )}
-        </ScrollView>
-    );
-};
+const LentItems = props => (
+    <ScrollView contentContainerStyle={styles.itemsContainer}>
+        <View style={styles.header}>
+            <Icon
+                name="md-arrow-back"
+                size={30}
+                style={styles.backButton}
+                color="black"
+                onPress={() => props.nav.pop()}
+            />
+            <Text style={styles.headerTitle}>Lent Items</Text>
+        </View>
+        <Text style={styles.borrowingWrapper}>Currently lending</Text>
+        {props.activeLentItems ? (
+            props.activeLentItems.map((item, index) => (
+                <TouchableOpacity
+                    key={item.id}
+                    style={styles.itemPanel}
+                    onPress={() =>
+                        props.nav.navigate('Item', {
+                            ItemData: {
+                                id: item.id,
+                                image: item.image,
+                                title: item.title,
+                                category: item.category,
+                                year: item.year,
+                                condition: item.condition,
+                                description: item.description,
+                                latitude: item.latitude,
+                                longitude: item.longitude,
+                                price: item.price,
+                                priceOneWeek: item.priceOneWeek,
+                                priceOneMonth: item.priceOneMonth,
+                                owner: {
+                                    fullname: item.owner.fullname,
+                                    profileimage: item.owner.profileimage,
+                                    id: item.owner.id
+                                }
+                            }
+                        })
+                    }
+                >
+                    <Image
+                        key={item.image}
+                        style={styles.image}
+                        source={{ uri: item.image }}
+                    />
+                    <View style={styles.itemPanelText}>
+                        <Text key={index} style={styles.itemPanelTitle}>
+                            {item.title}
+                        </Text>
+                        <Text key={item.price}>
+                            Total fee: $
+                            {item.price *
+                                moment(item.endDate)
+                                    .subtract(item.startDate)
+                                    .format('d')}
+                        </Text>
+                        <Text style={styles.borrowingFrom}>
+                            Borrowing from: {'\n'}
+                            {moment(item.startDate).format('MMMM Do')} to{' '}
+                            {moment(item.endDate).format('MMMM Do')}
+                        </Text>
+                    </View>
+                </TouchableOpacity>
+            ))
+        ) : (
+            <Text>No items currently lending</Text>
+        )}
+        <Text style={styles.borrowedHeader}>Lent</Text>
+        {props.expiredLentItems ? (
+            props.expiredLentItems.map((item, index) => (
+                <TouchableOpacity
+                    key={item.id}
+                    style={styles.itemPanel}
+                    onPress={() =>
+                        props.nav.navigate('Item', {
+                            ItemData: {
+                                id: item.id,
+                                image: item.image,
+                                title: item.title,
+                                category: item.category,
+                                year: item.year,
+                                condition: item.condition,
+                                description: item.description,
+                                latitude: item.latitude,
+                                longitude: item.longitude,
+                                price: item.price,
+                                priceOneWeek: item.priceOneWeek,
+                                priceOneMonth: item.priceOneMonth,
+                                owner: {
+                                    fullname: item.owner.fullname,
+                                    profileimage: item.owner.profileimage,
+                                    id: item.owner.id
+                                }
+                            }
+                        })
+                    }
+                >
+                    <Image
+                        key={item.image}
+                        style={styles.image}
+                        source={{ uri: item.image }}
+                    />
+                    <View style={styles.itemPanelText}>
+                        <Text key={index} style={styles.itemPanelTitle}>
+                            {item.title}
+                        </Text>
+                        <Text key={item.price}>
+                            Total fee: $
+                            {item.price *
+                                moment(item.endDate)
+                                    .subtract(item.startDate)
+                                    .format('d')}
+                        </Text>
+                        <Text style={styles.borrowingFrom}>
+                            Borrowed from: {'\n'}
+                            {moment(item.startDate).format('MMMM Do')} to{' '}
+                            {moment(item.endDate).format('MMMM Do')}
+                        </Text>
+                    </View>
+                </TouchableOpacity>
+            ))
+        ) : (
+            <Text>No lending history</Text>
+        )}
+    </ScrollView>
+);
 
 LentItems.propTypes = {
-    nav: PropTypes.objectOf(
-        PropTypes.oneOfType([PropTypes.func, PropTypes.object])
-    ).isRequired,
+    nav: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.func, PropTypes.object])).isRequired,
     activeLentItems: PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.object]))
         .isRequired,
     expiredLentItems: PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.object]))

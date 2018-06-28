@@ -13,6 +13,7 @@ import HomeContainer from '../screens/Home';
 import BorrowContainer from '../screens/Borrow';
 import LendContainer from '../screens/Lend';
 import AccountContainer from '../screens/Account';
+import BioContainer from '../screens/Bio';
 import SignInContainer from '../screens/SignIn';
 import MyItems from '../screens/MyItems';
 import Messages from '../screens/Messages';
@@ -90,6 +91,15 @@ const lendStack = createStackNavigator(
         })
     }
 );
+const itemStack = createStackNavigator(
+    {
+        Item: SingleItemContainer,
+        Calendar: CalendarContainer
+    },
+    {
+        headerMode: 'none'
+    }
+);
 
 const accountStack = createStackNavigator(
     {
@@ -99,7 +109,10 @@ const accountStack = createStackNavigator(
         BorrowedItems,
         LentItems,
         Messages,
-        TransactionHistory
+        TransactionHistory,
+        Item: SingleItemContainer,
+        Calendar: CalendarContainer,
+        Bio: BioContainer
     },
     {
         navigationOptions: ({ navigation }) => ({

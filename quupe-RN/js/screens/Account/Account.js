@@ -4,16 +4,42 @@ import { View, Text, Image, TouchableOpacity, ScrollView } from 'react-native';
 import styles from './styles';
 
 const Account = props => {
-    const { fullname, bio, profileimage, items, allBorrowed } = props.userData;
+    const {
+        fullname,
+        bio,
+        profileimage,
+        items,
+        allBorrowed,
+        id
+    } = props.userData;
     return (
         <ScrollView style={styles.accountWrapper}>
             <View style={styles.cardContainer}>
-                <Image
-                    style={styles.profileimage}
-                    source={{ uri: profileimage }}
-                />
+                {profileimage ? (
+                    <Image
+                        style={styles.profileimage}
+                        source={{ uri: profileimage }}
+                    />
+                ) : (
+                    <Image
+                        style={styles.imagePlaceholder}
+                        source={require('../../assets/images/quupe-app-background.jpeg')}
+                    />
+                )}
                 <View style={styles.nameContainer}>
-                    <Text style={styles.fullname}>{fullname}</Text>
+                    <View style={styles.nameEditWrapper}>
+                        <Text style={styles.fullname}>{fullname}</Text>
+                        <TouchableOpacity
+                            style={styles.edit}
+                            onPress={() =>
+                                props.nav.navigate('Bio', {
+                                    nav: props.nav
+                                })
+                            }
+                        >
+                            <Text>Edit</Text>
+                        </TouchableOpacity>
+                    </View>
                     <TouchableOpacity
                         onPress={() => props.logOut(props.currentToken)}
                     >
@@ -86,6 +112,9 @@ const Account = props => {
                         onPress={() =>
                             props.nav.navigate('BorrowedItems', {
                                 borrowed: allBorrowed,
+                                id,
+                                profileimage,
+                                fullname,
                                 nav: props.nav
                             })
                         }
@@ -116,12 +145,8 @@ const Account = props => {
 };
 
 Account.propTypes = {
-    nav: PropTypes.objectOf(
-        PropTypes.oneOfType([PropTypes.func, PropTypes.object])
-    ).isRequired,
-    userData: PropTypes.objectOf(
-        PropTypes.oneOfType([PropTypes.string, PropTypes.array])
-    ).isRequired,
+    nav: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.func, PropTypes.object])).isRequired,
+    userData: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string, PropTypes.array])).isRequired,
     logOut: PropTypes.func.isRequired,
     currentToken: PropTypes.string.isRequired
 };

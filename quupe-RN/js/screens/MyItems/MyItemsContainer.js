@@ -6,12 +6,19 @@ import MyItems from './MyItems';
 export class MyItemsContainer extends Component {
     render() {
         const userItems = this.props.navigation.state.params.userItems;
-        return <MyItems userItems={userItems} nav={this.props.navigation} />;
+        const userInfo = this.props.navigation.state.params;
+        return (
+            <MyItems
+                userItems={userItems}
+                nav={this.props.navigation}
+                fullname={userInfo.fullname}
+                profileimage={userInfo.profileimage}
+                id={userInfo.id}
+            />
+        );
     }
 }
 MyItemsContainer.propTypes = {
-    navigation: PropTypes.objectOf(
-        PropTypes.oneOfType([PropTypes.func, PropTypes.object])
-    ).isRequired
+    navigation: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.func, PropTypes.object])).isRequired
 };
 export default MyItemsContainer;

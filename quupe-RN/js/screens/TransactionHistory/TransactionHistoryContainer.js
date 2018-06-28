@@ -26,6 +26,11 @@ const allItemsQuery = gql`
                 image
                 longitude
                 latitude
+                owner {
+                    fullname
+                    id
+                    profileimage
+                }
                 allBorrowers {
                     id
                 }
@@ -57,18 +62,14 @@ class TransactionHistoryContainer extends Component {
                     if (error) return <Text>Error</Text>;
 
                     const borrowedItemsData = data.User.allBorrowed;
-
-                    const lentItemsData = data.User.items.filter(
-                        item => item.allBorrowers[0]
-                    );
+       
+                    const lentItemsData = data.User.items.filter(item => item.allBorrowers[0]);
 
                     const totalMoneyEarned = [];
                     lentItemsData.map(item => {
                         totalMoneyEarned.push(parseInt(item.price));
                     });
-                    const moneyEarned = totalMoneyEarned.reduce(
-                        (a, b) => a + b
-                    );
+                    const moneyEarned = totalMoneyEarned.reduce((a, b) => a + b);
 
                     const totalMoneySpent = [];
                     borrowedItemsData.map(item => {
@@ -91,9 +92,7 @@ class TransactionHistoryContainer extends Component {
     }
 }
 TransactionHistoryContainer.propTypes = {
-    navigation: PropTypes.objectOf(
-        PropTypes.oneOfType([PropTypes.func, PropTypes.object])
-    ).isRequired
+    navigation: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.func, PropTypes.object])).isRequired
 };
 
 export default connect(state => ({
