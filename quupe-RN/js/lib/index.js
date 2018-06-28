@@ -7,4 +7,3 @@ export const distanceFormatter = (itemLat, itemLong, userLat, userLong) => {
     );
     return (distanceInKM / 1000).toFixed(1);
 };
-// export const sortByDistance = ();

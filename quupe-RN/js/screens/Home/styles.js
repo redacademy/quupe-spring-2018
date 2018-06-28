@@ -5,7 +5,6 @@ const styles = StyleSheet.create({
         position: 'absolute',
         height: '100%',
         backgroundColor: '#ffffff',
-        // color: '#0E80C4',
         top: 0
     }
 });
