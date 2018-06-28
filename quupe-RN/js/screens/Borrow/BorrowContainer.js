@@ -18,9 +18,7 @@ class BorrowContainer extends Component {
             position => {
                 fetch(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${
                     position.coords.latitude
-                    },${
-                    position.coords.longitude
-                    }&key=${GOOGLE_API_KEY}`)
+                },${position.coords.longitude}&key=${GOOGLE_API_KEY}`)
                     .then(response => response.json())
                     .then(res =>
                         this.props.dispatch(getCurrentLocationName(res.results[0].formatted_address)));
@@ -42,6 +40,8 @@ class BorrowContainer extends Component {
             <Borrow
                 latitude={this.props.latitude}
                 longitude={this.props.longitude}
+                navigation={this.props.navigation}
+                ItemFilter={this.props.ItemFilter}
             />
         );
     }
@@ -49,16 +49,20 @@ class BorrowContainer extends Component {
 
 BorrowContainer.defaultProps = {
     latitude: 0,
-    longitude: 0
+    longitude: 0,
+    ItemFilter: ''
 };
 
 BorrowContainer.propTypes = {
     latitude: PropTypes.number,
     longitude: PropTypes.number,
-    dispatch: PropTypes.func.isRequired
+    dispatch: PropTypes.func.isRequired,
+    navigation: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.func, PropTypes.object])).isRequired,
+    ItemFilter: PropTypes.string
 };
 
 export default connect(state => ({
     latitude: state.Location.latitude,
-    longitude: state.Location.longitude
+    longitude: state.Location.longitude,
+    ItemFilter: state.ItemFilter.input
 }))(BorrowContainer);

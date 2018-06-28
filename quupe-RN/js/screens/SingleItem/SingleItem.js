@@ -71,14 +71,13 @@ const SingleItem = props => (
             <View style={styles.tabInfo}>
                 <View style={styles.profileInfo}>
                     <Image
-                        source={{ uri: props.item.owner.profileImage }}
+                        source={{ uri: props.item.owner.profileimage }}
                         style={styles.profileImage}
                     />
                     <Text>{props.item.owner.fullname}</Text>
                 </View>
                 <TouchableOpacity
                     style={styles.sendMessage}
-                    // TODO: open up a pop up to display messages and wrap in mutation to send the message
                     onPress={() => props.dispatch(displayMessageOverlay())}
                 >
                     <Text style={styles.messageText}>Send Message</Text>
